@@ -12,12 +12,124 @@
       <input type="text" name="fname" id="fname" required>
       <br>
       <label for="lname">Achternaam:</label>
-      <input type="text" name="lname" required>
+      <input type="text" name="lname" id="lname" required>
   </form>
+
+  <!--Radiobutton-->
   <form>
     <label>
-      <input type="radio"
+      Yes
+      <input type="radio" name="yesorno" value="yes" checked>
     </label>
+    <label>
+      No
+      <input type="radio" name="yesorno" value="no">
+    </label>
+  </form>
+
+  <!--Checkbox-->
+  <label>
+    Zout
+    <input type="checkbox" name="spices">
+  </label>
+  <label>
+    Peper
+    <input type="checkbox" name="spices">
+  </label>
+
+  <!--Password-->
+  <div>
+    <label for="username">Username:</label>
+    <input type="text" id="username" name="username">
+  </div>
+  <div>
+    <label for="password">Password</label>
+    <input type="password" id="password" name="password">
+  </div>
+
+  
+  <form>
+    <label>
+      Burgerservicenummer:
+      <input type="text" name="bsn">
+    </label>
+    <!--Reset-->
+    <input type="reset" value="This is not a reset button">
+    <!--Submit-->
+    <input type="submit" value="Versturen">
+  </form>
+
+  <!--Date-->
+  <label for="appointment">Kies een datum voor uw afspraak:</label>
+  <input 
+    type="date" 
+    id="appointment" 
+    name="appointment-date" 
+    value="2021-12-05"
+    min="2021-12-01"
+    max="2021-12-10">
+  
+  <!--Search-->
+  <label>
+    Zoek:
+    <input type="search" placeholder="Bv: NRC 2 januari" name="search"> 
+  </label>
+
+  <!--Time-->
+  <label>
+    Kies een tijdstip voor uw afspraak:
+    <input type="time" name="afpsraaktijd" min="11:00" max="16:00" required>
+    <!--Hidden-->
+    <input type="hidden" name="secret-data" value="save-the-queen!">
+  </label>
+
+  <!--Email-->
+  <label for="email">Voer uw Yahoo mailadres in:</label>
+  <input type="email" id="email" pattern=".+yahoo\.com" size="40">
+
+
+
+  <!--Opdracht 5-->
+  <form style="background: rgb(195, 193, 193); width: 600px;">
+    <fieldset>
+      <legend>Persoonsgegevens</legend>
+      <br>
+      <label for="firstname">Voornaam:</label>
+      <input type="text" name="fname" id="firstname" placeholder="voornaam" required>
+      <br>
+      <br>
+      <label for="lastname">Achternaam:</label>
+      <input type="text" name="lastname" id="lastname" placeholder="achternaam" required>
+      <br>
+      <br>
+      <label for="appointment">Kies een datum voor uw afspraak:</label>
+      <input 
+        type="date"
+        id="birthdate" 
+        name="birthdate" 
+        value="yyyy-mm-dd"
+        required>
+      <br>
+      <br>
+      <label>
+        M:
+        <input type="radio" name="sex" value="male" required>
+      </label>
+      <label>
+        V:
+        <input type="radio" name="sex" value="female" required>
+      </label>
+      <br>
+      <br>
+      <label for="postal-code">Postcode:</label>
+      <input type="text" name="postal-code" id="postal-code" placeholder="postcode" required>
+      <br>
+      <br>
+      <label for="address">Adres:</label>
+      <input type="text" name="address" id="address" placeholder="adres" required>
+    </fieldset>
+    <input type="submit" value="Versturen">
+    <input type="reset" value="Reset">
   </form>
 </body>
 </html>
