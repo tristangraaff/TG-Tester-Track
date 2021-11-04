@@ -8,12 +8,19 @@
   <title>Opdracht 5</title>
 </head>
 <style>
-  body {
-    background: rgb(211, 211, 211);
+  /* hiermee kan ik elementen selecteren die het eerste child van een ander element zijn */
+  h2:first-child {
+    color: red;
   }
 
-  p:nth-child(2) {
-    color: green;
+  /* hiermee kan ik de elementen selecteren die direct op een ander element volgen */
+  p + p {
+    font-weight: bold;
+  }
+
+  /* hiermee kan ik de elementen selecteren die een sibling van een ander element zijn */
+  h2 ~ p {
+    text-decoration: underline;
   }
 
 </style>

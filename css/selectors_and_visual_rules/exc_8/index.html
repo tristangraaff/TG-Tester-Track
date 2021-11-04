@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cascade and inheritance</title>
+</head>
+<style>
+  p {
+    color: aqua;
+  }
+
+  p {
+    color: red;
+  }
+
+  body {
+    text-decoration: underline;
+  }
+
+  ul {
+    font-size: 22px;
+  }
+
+</style>
+<body>
+  <p>Met het woord 'cascade' wordt aangegeven dat iets van boven naar beneden loopt, zoals een waterval.
+  In CSS houdt dit in dat de styles van boven naar beneden worden gelezen, en wanneer hier er conflicterende styles
+  worden gelezen, de onderste style wordt toegepast en de eerdere styles overschrijft.</p>
+  <p>Met inheritance wordt aangegeven welke CSS props worden overgenomen uit parent elements. Dit is vaak te bedenken
+  door je 'common sense' te gebruiken. Borders worden niet overgenomen, aangezien ik niet een border om ieder child
+  van het element waar ik een border op heb ingesteld wil hebben.</p>
+  <ul>
+    <li>Hi</li>
+  </ul>
+</body>
+</html>
