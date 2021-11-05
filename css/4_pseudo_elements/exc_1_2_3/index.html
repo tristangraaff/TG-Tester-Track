@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Opdracht 1, 2 en 3</title>
+</head>
+<style>
+  .after::after {
+    content: ">>>";
+    background: blue;
+    position: absolute;
+    width: 270px;
+  }
+
+  .backdrop::backdrop {
+    background: linear-gradient(orange, blue, red)
+  }
+
+  .before::before {
+    content: "LET GOED OP!";
+    font-style: italic;
+    font-weight: bold;
+    color: red;
+  }
+
+  .placeholder {
+    width: 300px;
+    height: 50px;
+  }
+
+  .placeholder::placeholder {
+    color: red;
+    font-size: 30px;
+    width: 1000px;
+  }
+
+  .first-letter::first-letter {
+    font-size: 30px;
+  }
+
+  .first-line {
+    width: 200px;
+  }
+
+  .first-line::first-line {
+    text-decoration: underline;
+  }
+
+  .file-selector-button::file-selector-button {
+    background: yellow;
+    border: 2px solid blue;
+    border-radius: 5px;
+  }
+
+  .grammar-error::grammar-error {
+    color: red;
+  }
+
+  .marker::marker {
+    font-size: 35px;
+    color: blue;
+  }
+
+  .selection::selection {
+    background: red;
+    color: yellow;
+  }
+
+  .create-scrolling-space {
+    height: 500px;
+  }
+
+  .target-text::target-text {
+    color: red;
+    background: blue;
+  }
+
+</style>
+<body>
+  <p>Opdracht 1 en 2</p>
+  <p>Kun je enkele voorbeelden geven van pseudo-elementen (minimaal 4)? Beschrijf met je eigen woorden
+    wat deze speudo-elementen inhouden.
+  </p>
+  <ul>
+    <li>
+      <p class="after">
+        1. ::after - ::after creeert een pseudo-element dat de last child van het geselecteerde
+        element is. Je kan dus content na / achter de content van het geselecteerde element plaatsen.
+        Het is inline by default.
+      </p>
+    </li>
+    <li>
+      <p>
+        2. ::backdrop - met ::backdrop wordt er een box ten grootte van de viewport onder alle andere
+        van de pagina in full-screen mode getoond en kan deze worden gestyled.
+      </p>
+      <dialog class="backdrop">
+        <h2>I'm a dialog window</h2>
+        <button onclick="closeDialog()">Close</button>
+      </dialog>  
+      <button onclick="openDialog()">Open dialog</button>
+    </li>
+    <li>
+      <p class="before">
+        3. ::before - ::before creeert een pseudo-element dat de first child van het geselecteerde element
+        is. Je kan dus content voor de content van het geselecteerde element plaatsen. Het is inline by
+        default.
+      </p>
+    </li>
+    <li>
+      <p>
+        4. ::cue - ???
+      </p>
+    </li>
+    <li>
+      <p>
+        5. ::cue-region - ???
+      </p>
+    </li>
+    <li>
+      <p class="first-letter">
+        6. ::first-letter - met ::first-letter kan je de style van de eerste letter van een element
+        met display: block aanpassen. Dit kan alleen wanneer er geen andere content voor deze eerste letter
+        staat.
+      </p>
+    </li>
+    <li>
+      <p class="first-line">
+        7. ::first-line - met ::first line kan je de styles van de eerste regel van een element met display:block aanpassen.
+      </p>
+    </li>
+    <li>
+      <p>
+        8. ::file-selector-button - met ::file-selector-button kan je de styles van de button van een input element met de type="file"
+        aanpassen.
+      </p>
+      <input class="file-selector-button" type="file">
+    </li>
+    <li>
+      <p class="grammar-error">
+        9. ::grammar-error - met ::grammar-error wordt aangegeven dat een user agend een stuk tekst als grammaticaal incorrect heeft
+        gemarkeerd. Dit pseudo-element is experimenteel en op dit moment niet compatible met de bekendste browsers.
+      </p>
+    </li>
+    <li class="marker">
+      <p>
+        10. ::marker - met ::marker kan het bolletje van een element met display: list-item worden gestyled, zoals li en summary.
+      </p>
+    </li>
+    <li>
+      <p>
+        11. ::part - "The ::part CSS pseudo-element represents any element within a shadow tree that has a matching part attribute." Hiervoor
+        is kennis van de Shadow DOM en JavaScript nodig om een voorbeeld te kunnen geven.
+      </p>
+    </li>
+    <li>
+      <p >
+        12. ::placeholder - met ::placeholder kan je de styles van de placeholder tekst in een input of 
+        textarea element aanpassen. 
+      </p>
+      <textarea class="placeholder" placeholder="Schrijf hier iets"></textarea>
+    </li>
+    <li>
+      <p class="selection">
+        13. ::selection - met ::selection kan je de styles van het met de muis geselecteerde gedeelte van
+        de pagina aanpassen. Probeer het uit door deze tekst te selecteren.
+      </p>
+    </li>
+    <li>
+      <p>
+        14. The ::slotted() CSS pseudo-element represents any element that has been placed into a slot inside an HTML template (see Using 
+        templates and slots for more information).
+
+        This only works when used inside CSS placed within a shadow DOM. Note also that this selector won't select a text node placed into a 
+        slot; it only targets actual elements.
+      </p>
+    </li>
+    <li>
+      <p>
+        15. ::spelling-error - met ::spelling-error wordt aangegeven dat een user agend een stuk tekst met een spellingsfout heeft
+        gemarkeerd. Dit pseudo-element is experimenteel en op dit moment niet compatible met de bekendste browsers.
+      </p>
+    </li>
+    <li>
+      <p class="target-text">
+        16. ::target-text - met ::target-text kan de tekst waar naartoe wordt gescrolld gestyled worden als de browser scroll-to tekstfragmenten
+        ondersteunt.
+      </p>
+      <p class="target-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent nec maximus urna, sit amet feugiat nunc. In hendrerit iaculis urna hendrerit auctor. Sed non consequat enim. Proin ante turpis, congue accumsan purus id, posuere vestibulum elit. Duis eget purus imperdiet, pulvinar magna eu, euismod ex. Vivamus ultricies felis eu dolor semper, eu commodo magna congue. Maecenas porta pulvinar justo vel maximus. Aliquam vel eleifend enim. Pellentesque ornare luctus felis vel eleifend. Nullam sed posuere dolor.
+
+        Pellentesque rutrum ligula sed mattis faucibus. Nulla facilisi. Integer lobortis facilisis dolor nec posuere. Maecenas vehicula mauris ac nulla lobortis euismod. Cras pretium, velit eget efficitur sagittis, ex lectus pharetra leo, vel porta lorem nibh et quam. Aliquam erat volutpat. Sed lacinia, tellus nec commodo pulvinar, augue erat aliquet turpis, sed auctor augue massa in est. Donec non lacus commodo, vehicula tellus in, scelerisque tellus. Maecenas sit amet ornare tellus. Proin scelerisque erat at enim condimentum, vel rhoncus nibh luctus. Morbi et elit ac enim facilisis mattis id imperdiet orci. Cras id mi diam. Nam vitae ipsum luctus, dictum massa ac, porttitor nulla.
+        
+        Phasellus rutrum mi in lectus molestie viverra. Cras consequat nisi ut nulla consectetur, eget aliquam massa faucibus. Nulla in dui placerat, iaculis ligula vitae, vulputate leo. Nullam ornare nisl quis consectetur pulvinar. Morbi quam ante, interdum quis accumsan ut, tempus sit amet purus. Proin ultrices sit amet quam eu egestas. Maecenas a felis id tortor lacinia gravida. Praesent aliquam mi velit, sit amet volutpat ex sodales in.
+        
+        Sed interdum elementum risus, lacinia ullamcorper nisi imperdiet eget. Nunc fringilla et justo id auctor. Suspendisse tristique justo eu porta lacinia. Quisque luctus, mauris eu condimentum tincidunt, neque dolor consectetur justo, nec ultricies tortor magna eu orci. Donec sed leo dignissim, porta dui quis, ornare nunc. In hac habitasse platea dictumst. Fusce arcu neque, bibendum eget eleifend sodales, ultrices nec diam. Nunc turpis erat, sollicitudin sed metus sodales, interdum dapibus elit. Suspendisse non dui in mauris auctor rhoncus. Mauris gravida at odio vitae ornare. Integer at tempor diam. Integer non luctus ipsum. Vivamus enim odio, malesuada tristique porta vitae, vulputate id tortor.
+        
+        Donec placerat tempus consequat. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Donec metus nulla, tincidunt at augue eget, faucibus ultrices ante. Interdum et malesuada fames ac ante ipsum primis in faucibus. Donec vestibulum velit turpis. Nulla eleifend porta nulla malesuada efficitur. In a tellus at nunc lobortis malesuada. Aliquam ut ipsum euismod, tincidunt lorem egestas, luctus elit. Etiam luctus feugiat egestas.</p>
+    </li>
+  </ul>
+</body>
+<script>
+  var dialog = document.querySelector('dialog');
+function openDialog() {  
+  dialog.showModal();
+}
+function closeDialog() {  
+  dialog.close();
+}
+</script>
+</html>
