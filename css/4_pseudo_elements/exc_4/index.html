@@ -7,9 +7,13 @@
   <title>Opdracht 4</title>
 </head>
 <style>
-  input,
-  button,
-  h2 {
+  div {
+    width: 600px;
+    height: 50px;
+    position: relative;
+  }
+
+  button {
     width: 600px;
     height: 50px;
     font-size: 20px;
@@ -17,40 +21,48 @@
     background: rgb(0, 204, 255);
     color: #fff;
     border: none;
-    margin-bottom: 1em;
     position: relative;
   }
 
-  input::before {
-    content: "hey";
-    border-top: 5px solid orange;
-    position: absolute;
-    top: 200px;
-  }
-
-  button::before {
+  div::before,
+  div::after {
     content: "";
     background: orange;
     position: absolute;
     height: 100%;
     width: 5px;
-    bottom: 0;
+    z-index: 1;
   }
 
-  .h2::before {
-    content:'';
+  div::before {
+    left: 0;
+  }
+
+  div::after {
+    right: 0;
+  }
+
+  button::before,
+  button::after {
+    content: "";
+    background: orange;
     position: absolute;
-    background-color: orange;
-    width: 3px;
-    height: 90%;
-    bottom: 0;
+    height: 5px;
+    width: 50px;
   }
 
+  button::before {
+    left: 0;
+    top: 0;
+  }
+
+  button::after {
+    right: 0;
+    bottom: 0;
+  }
 
 </style>
 <body>
-  <input type="button" value="Button">
   <div><button type="button">Button</button></div>
-  <h2 class="h2">Hi</h2>
 </body>
 </html>
