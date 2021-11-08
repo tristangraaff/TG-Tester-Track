@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Opdracht 6</title>
+  </head>
+  <style>
+    div {
+      color: white;
+      background: black;
+      height: 200px;
+      width: 200px;
+      display: inline-block;
+      border-radius: 100px;
+      position: relative;
+      margin: 0 50px;
+    }
+
+    div > p {
+      font-size: 30px;
+      position: absolute;
+      left: 50%;
+      top: 30%;
+      transform: translate(-50%, -50%);
+    }
+
+    div::before {
+      position: absolute;
+      content: "";
+      color: white;
+      width: 80px;
+      height: 80px;
+      top: 30%;
+      left: -40px;
+      background: black;
+      border-radius: 50%;
+    }
+
+    div::after {
+      position: absolute;
+      content: "";
+      width: 80px;
+      height: 80px;
+      top: 30%;
+      right: -40px;
+      background: black;
+      border-radius: 50%;
+    }
+
+    .dot-left {
+      color: white;
+      font-size: 50px;
+      position: absolute;
+      top: 35%;
+      left: 0;
+      transform: translateY(-50%);
+      z-index: 1;
+    }
+
+    .dot-right {
+      color: white;
+      font-size: 50px;
+      position: absolute;
+      top: 55%;
+      right: 0;
+      transform: translateY(-50%);
+      z-index: 1;
+    }
+  </style>
+  <body>
+    <div>
+      <span class="dot-left">.</span>
+      <p>1</p>
+      <span class="dot-right">.</span>
+    </div>
+    <div>
+      <span class="dot-left">.</span>
+      <p>2</p>
+      <span class="dot-right">.</span>
+    </div>
+    <div>
+      <span class="dot-left">.</span>
+      <p>3</p>
+      <span class="dot-right">.</span>
+    </div>
+  </body>
+</html>
