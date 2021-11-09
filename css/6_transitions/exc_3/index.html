@@ -1,49 +1,91 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Opdracht 3</title>
-</head>
-<style>
-  .container {
-    background: rgb(230, 230, 230);
-    padding: 1em;
-  }
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Opdracht 3</title>
+  </head>
+  <style>
+    .container {
+      background: rgb(230, 230, 230);
+      padding: 1em;
+    }
 
-  .container > div {
-    width: 100px;
-    height: 100px;
-    background: rgb(230, 230, 230);
-    border: 1px solid black;
-    margin: 10px;
-    position: relative;
-  }
+    .container > div {
+      width: 100px;
+      height: 100px;
+      background: rgb(230, 230, 230);
+      border: 1px solid black;
+      margin: 10px;
+      position: relative;
+    }
 
-  div > p {
-    position: absolute;
-    margin: 0;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-  }
+    div > p {
+      position: absolute;
+      margin: 0;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
 
-  .one {
-    transition-property: background-color, border-radius;
-  }
+    .one {
+      transition-property: background-color, border-radius, margin-left;
+      transition-duration: 3s;
+    }
 
-  #four {
-    background: white;
-  }
-</style>
-<body>
-  <div class="container">
-    <div class="one"><p>1</p></div>
-    <div class="two"><p>2</p></div>
-    <div class="three"><p>3</p></div>
-    <div class="four" id="four"><p>4</p></div>
-    <div class="five"><p>5</p></div>
-  </div>
-</body>
+    .two {
+      transition-property: background-color, border-radius, margin-left;
+      transition-timing-function: ease-in;
+      transition-duration: 5s;
+    }
+
+    .three {
+      transition-property: background-color, border-radius, margin-left;
+      transition-timing-function: ease-out;
+      transition-duration: 3s;
+    }
+
+    .four {
+      transition-property: background-color, border-radius, margin-left;
+      transition-duration: 3s;
+      transition-delay: 1s;
+    }
+
+    .five {
+      transition-property: background-color, border-radius, margin-left;
+      transition-duration: 6s;
+      transition-timing-function: cubic-bezier(0.29, 1.01, 1, -0.68);
+    }
+
+    .one:active,
+    .two:active,
+    .three:active,
+    .four:active,
+    .five:active {
+      background-color: red;
+      margin-left: 94%;
+    }
+
+    .one:active {
+      border-radius: 50%;
+    }
+
+    .two:active {
+      border-radius: 25%;
+    }
+
+    #four {
+      background: white;
+    }
+  </style>
+  <body>
+    <div class="container">
+      <div class="one"><p>1</p></div>
+      <div class="two"><p>2</p></div>
+      <div class="three"><p>3</p></div>
+      <div class="four" id="four"><p>4</p></div>
+      <div class="five"><p>5</p></div>
+    </div>
+  </body>
 </html>
