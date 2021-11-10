@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Week 2</title>
+  </head>
+  <style>
+    .main-div {
+      display: flex;
+      align-items: center;
+      align-content: center;
+      gap: 10px;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .dot {
+      width: 20px;
+      height: 20px;
+      background: rgb(88, 88, 255);
+      border-radius: 50%;
+    }
+
+    .dot-one,
+    .dot-two,
+    .dot-three {
+      transition-property: width, height;
+      transition-duration: 0.2s;
+    }
+
+    .dot-two {
+      transition-delay: 0.2s;
+    }
+
+    .dot-three {
+      transition-delay: 0.4s;
+    }
+
+    .main-div:hover .dot-one,
+    .main-div:hover .dot-two,
+    .main-div:hover .dot-three {
+      width: 25px;
+      height: 25px;
+    }
+
+    .container {
+      height: 25px;
+      width: 25px;
+      position: relative;
+    }
+
+    .container > .dot {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+  </style>
+  <body>
+    <div class="main-div">
+      <div class="container"><div class="dot dot-one"></div></div>
+      <div class="container"><div class="dot dot-two"></div></div>
+      <div class="container"><div class="dot dot-three"></div></div>
+    </div>
+  </body>
+</html>
