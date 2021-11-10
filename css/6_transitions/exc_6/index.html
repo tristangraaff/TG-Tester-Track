@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Opdracht 6</title>
+  </head>
+  <style>
+    body {
+      display: flex;
+      padding-top: 10em;
+    }
+    p {
+      font-size: 20px;
+    }
+
+    h2 {
+      font-size: 25px;
+    }
+
+    .card {
+      background: gray;
+      color: white;
+      padding: 1em;
+      border: 1px solid black;
+      border-radius: 10px;
+    }
+
+    .one,
+    .two,
+    .three,
+    .four {
+      transition-property: margin-right, transform, color;
+      transition-duration: 0.3s;
+    }
+
+    .one:hover {
+      margin-right: 75px;
+      transform: translateY(-10px);
+      color: red;
+    }
+
+    .two {
+      transform: translateX(-75px);
+    }
+
+    .two:hover {
+      margin-right: 75px;
+      transform: translate(-75px, -10px);
+      color: red;
+    }
+
+    .three {
+      transform: translateX(-150px);
+    }
+
+    .three:hover {
+      margin-right: 75px;
+      transform: translate(-150px, -10px);
+      color: red;
+    }
+
+    .four {
+      transform: translateX(-225px);
+    }
+
+    .four:hover {
+      transform: translate(-225px, -10px);
+      color: red;
+    }
+  </style>
+  <body>
+    <div class="card one trans-1">
+      <p>Article sep 16, 2019</p>
+      <h2>Placeholder title</h2>
+      <p>Author:</p>
+      <p>Kin Sing</p>
+    </div>
+    <div class="card two">
+      <p>Article sep 16, 2019</p>
+      <h2>Placeholder title</h2>
+      <p>Author:</p>
+      <p>Kin Sing</p>
+    </div>
+    <div class="card three">
+      <p>Article sep 16, 2019</p>
+      <h2>Placeholder title</h2>
+      <p>Author:</p>
+      <p>Kin Sing</p>
+    </div>
+    <div class="card four">
+      <p>Article sep 16, 2019</p>
+      <h2>Placeholder title</h2>
+      <p>Author:</p>
+      <p>Kin Sing</p>
+    </div>
+  </body>
+</html>
