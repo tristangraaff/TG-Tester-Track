@@ -1,0 +1,47 @@
+div {
+  background: red;
+  margin: 15px;
+  width: auto;
+}
+
+.d1 {
+  height: 800px;
+}
+
+.d2 {
+  height: 500px;
+}
+
+.d3 {
+  /* niet werken omdat px maar 1 keer gedeclared hoeft te worden */
+  height: 100px;
+  /* werkt dus wel */
+}
+
+.d4 {
+  height: -100px;
+  /* toont niets want height komt uit op -100px */
+}
+
+.d5 {
+  height: 600px;
+}
+
+.d6 {
+  height: 750px;
+}
+
+.d7 {
+  height: 30px / 5;
+  width: 24px / 4;
+  /* ik verwachtte dat het netjes gedeeld zou worden, maar de property value wordt door
+  css als invalid gezien */
+}
+
+.d8 {
+  /* ik verwacht dat het wel werkt met de haakjes toegevoed */
+  height: 6px;
+  width: 6px;
+  /* px value mag maar 1 keer gegeven worden */
+}
+/*# sourceMappingURL=styles.css.map */
