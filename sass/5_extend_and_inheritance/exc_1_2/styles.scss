@@ -1,0 +1,11 @@
+$break-small: 400px;
+$break-large: 900px;
+
+h1 {
+  @media (max-width: $break-small) {
+    background-color: red;
+  }
+  @media (min-width: $break-large) {
+    font-size: 10em;
+  }
+}

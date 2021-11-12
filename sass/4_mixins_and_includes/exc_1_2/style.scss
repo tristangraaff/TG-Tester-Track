@@ -1,0 +1,34 @@
+@mixin button {
+  background-color: red;
+  color: yellow;
+  font-weight: bold;
+  font-size: 1.5em;
+  padding: .5em;
+  &:hover {
+    background-color: black;
+  }
+}
+
+@mixin square($height, $width) {
+  height: $height;
+  width: $width;
+  background-color: blue;
+  transition: 2s background-color;
+  &:hover {
+    background-color: red;;
+  }
+}
+
+body {
+  display: grid;
+  place-items: center;
+  height: 100vh;
+}
+
+.button {
+  @include button();
+}
+
+.colorChangingSquare {
+  @include square(200px, 200px);
+}

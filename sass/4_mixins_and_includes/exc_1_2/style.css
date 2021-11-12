@@ -1,0 +1,31 @@
+body {
+  display: -ms-grid;
+  display: grid;
+  place-items: center;
+  height: 100vh;
+}
+
+.button {
+  background-color: red;
+  color: yellow;
+  font-weight: bold;
+  font-size: 1.5em;
+  padding: .5em;
+}
+
+.button:hover {
+  background-color: black;
+}
+
+.colorChangingSquare {
+  height: 200px;
+  width: 200px;
+  background-color: blue;
+  -webkit-transition: 2s background-color;
+  transition: 2s background-color;
+}
+
+.colorChangingSquare:hover {
+  background-color: red;
+}
+/*# sourceMappingURL=style.css.map */

@@ -1,0 +1,13 @@
+@import "./colors";
+
+.button {
+  width: 200px;
+  height: 40px;
+  background: $button-color;
+  border-radius: 15px;
+  font-family: 'Courier New', Courier, monospace;
+  transition: .3s background-color;
+  &:hover {
+    background-color: $button-hover-color;
+  }
+}

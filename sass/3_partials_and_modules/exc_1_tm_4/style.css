@@ -1,0 +1,22 @@
+.button {
+  width: 200px;
+  height: 40px;
+  background: #f0f0a4;
+  border-radius: 15px;
+  font-family: 'Courier New', Courier, monospace;
+  -webkit-transition: .3s background-color;
+  transition: .3s background-color;
+}
+
+.button:hover {
+  background-color: #adade9;
+}
+
+.button {
+  background: #f8b840;
+}
+
+.button:hover {
+  background-color: orangered;
+}
+/*# sourceMappingURL=style.css.map */
