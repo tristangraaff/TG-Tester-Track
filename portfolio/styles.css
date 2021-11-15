@@ -1,24 +1,39 @@
-body {
-  background-color: #181818;
+/* Typography */
+h1,
+h2,
+h3 {
+  font-family: "eurostile", sans-serif;
 }
 
 h1 {
-  font-size: 200px;
-  color: #F6C90E;
   color: #ffff2b;
-  border: 20px solid #4C5F7A;
-  border: 20px solid #253344;
+  font-size: 3.3rem;
 }
 
-h2 {
-  font-size: 200px;
-  color: #fdb25b;
-  color: #f0b0be;
-}
-
-p {
-  font-size: 100px;
-  color: #F1F1F1;
+p,
+li {
+  font-size: 1.7rem;
   color: #8b99e9;
+}
+
+/* Preventive stylings */
+body {
+  margin: 0;
+  padding: 0;
+  background: #181818;
+}
+
+body h1,
+body h2,
+body h3,
+body p,
+body li {
+  margin: 0;
+  padding: 0;
+}
+
+body img {
+  max-width: 100%;
+  display: block;
 }
 /*# sourceMappingURL=styles.css.map */

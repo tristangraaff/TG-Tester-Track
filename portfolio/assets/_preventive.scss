@@ -1,0 +1,19 @@
+/* Preventive stylings */
+
+body {
+  margin: 0;
+  padding: 0;
+  background: $dark-gray;
+  h1,
+  h2,
+  h3,
+  p,
+  li {
+    margin: 0;
+    padding: 0;
+  }
+  img {
+    max-width: 100%;
+    display: block;
+  }
+}

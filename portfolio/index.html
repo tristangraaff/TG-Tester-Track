@@ -11,11 +11,11 @@
     <header>
       <nav>
         <ul>
-          <li><a href="#">Welcome</a></li>
-          <li><a href="#">Skills</a></li>
-          <li><a href="#">Work</a></li>
-          <li><a href="#">Experience</a></li>
-          <li><a href="#">Contact</a></li>
+          <li><a class="nav-item" href="#">Welcome</a></li>
+          <li><a class="nav-item" href="#">Skills</a></li>
+          <li><a class="nav-item" href="#">Work</a></li>
+          <li><a class="nav-item" href="#">Experience</a></li>
+          <li><a class="nav-item" href="#">Contact</a></li>
         </ul>
       </nav>
       <footer>
@@ -35,7 +35,7 @@
           <h1>Hi, I'm Tristan Graaff and I build websites and test software</h1>
           <img src="NDL_261020263.jpg" alt="Tristan Graaff smiling" />
         </div>
-        <div class="welcome-see-more">
+        <div class="see-more welcome-see-more">
           <p>Check out my skills</p>
           <div class="welcome-arrow">
             <div class="arrow-stripe arrow-stripe-left"></div>
@@ -54,23 +54,122 @@
           culpa qui officia deserunt mollit anim id est laborum."
         </p>
         <div class="skills-container">
-          <div class="skills-dev">
+          <div class="skills-items skills-dev">
             <h3>As a developer</h3>
             <ul>
               <li>HTML</li>
+              <li>CSS</li>
+              <li>SASS</li>
+              <li>JavaScript</li>
+              <li>React</li>
+              <li>Wordpress (Divi)</li>
             </ul>
           </div>
-          <div class="skills-tester">
+          <div class="skills-items skills-tester">
             <h3>As a tester</h3>
+            <ul>
+              <li>Python(?)</li>
+            </ul>
           </div>
-          <div class="skills-social">
+          <div class="skills-items skills-social">
             <h3>As a colleague</h3>
+            <ul>
+              <li>Reliable</li>
+              <li>Communicative</li>
+              <li>Fast learner</li>
+              <li>Broad interest</li>
+            </ul>
+          </div>
+        </div>
+        <div class="see-more skills-see-more">
+          <p>Check out my work</p>
+          <div class="welcome-arrow">
+            <div class="arrow-stripe arrow-stripe-left"></div>
+            <div class="arrow-stripe arrow-stripe-right"></div>
           </div>
         </div>
       </section>
-      <section class="work"></section>
-      <section class="experience"></section>
-      <section class="contact"></section>
+      <section class="work">
+        <div class="work-container">
+          <div class="work-item"></div>
+          <div class="work-item"></div>
+          <div class="work-item"></div>
+          <div class="work-item"></div>
+          <div class="work-item"></div>
+          <div class="work-item"></div>
+        </div>
+      </section>
+      <section class="experience">
+        <h2>Relevant study and work experience</h2>
+        <div class="experience-item experience-item-winc">
+          <h3>Student front-end development</h3>
+          <p>
+            I studied front-end development at Winc Academy with the main focus
+            on JavaScript and React.
+          </p>
+          <p>August 2020 - March 2021</p>
+          <img
+            src="https://global-uploads.webflow.com/5ee34869dd28cd4237e2a5f2/5f030fe26dc9fc19df8dc16a_Winc-logo-objects.svg"
+            alt="Winc Academy logo"
+          />
+        </div>
+        <div class="experience-item experience-item-teacher">
+          <h3>Teacher front-end development</h3>
+          <p>
+            I taught 'status holders' (refugees who are allowed to live and work
+            in the Netherlands) the basics of html and css, to help them choose
+            a fruitful career.
+          </p>
+          <p>April 2021 - October 2021</p>
+          <img
+            src="https://www.rochdale.nl/fileadmin/_processed_/e/8/csm_SparkVillage_logo_RGB_bf75711e22.png"
+            alt="Spark Village logo"
+          />
+        </div>
+        <div class="experience-item experience-item-italki">
+          <h3>Online Dutch teacher</h3>
+          <p>
+            I taught Dutch to students on the iTalki platform from all over the world and helped them
+            aquire Dutch language skills.
+          </p>
+          <p>December 2017 - October 2021</p>
+          <img
+            src="https://www.clipartmax.com/middle/m2i8G6K9i8Z5N4i8_italki-will-connect-asyloss-volunteers-with-language-italki-logo/"
+            alt="iTalki logo"
+          />
+        </div>
+        <div class="experience-item experience-item-techgrounds">
+          <h3>Student testing / backend</h3>
+          <p>
+            Currently participating in a intensive six month course.
+          </p>
+          <p>November 2021 - April 2022</p>
+          <img
+            src="https://techgrounds.nl/wp-content/uploads/2021/05/cropped-logo-witte-letters-extra-groot-300x52.png"
+            alt="TechGrounds logo"
+          />
+        </div>
+      </section>
+      <section class="contact">
+        <form>
+          <fieldset>
+            <label>
+              <input type="text" name="name" placeholder="name" required>
+            </label>
+            <label>
+              <input type="email" name="email" placeholder="email" required>
+            </label>
+            <label>
+              <input type="text" name="subject" placeholder="subject" required>
+            </label>
+            <label>
+              <input type="text" name="message" placeholder="message" required>
+            </label>
+          </fieldset>
+          <input type="submit" value="Submit">
+          <input type="reset" value="Reset">
+        </form>
+      </section>
     </main>
   </body>
 </html>

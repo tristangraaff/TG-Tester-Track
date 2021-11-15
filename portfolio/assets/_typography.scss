@@ -1,0 +1,22 @@
+@import "colors";
+
+/* Typography */
+
+h1,
+h2,
+h3 {
+  font-family: "eurostile", sans-serif;
+  color: ;
+}
+
+h1 {
+  color: $light-yellow;
+  font-size: 3.3rem;
+}
+
+p,
+li {
+  font-family: "europa", sans-serif;
+  font-size: 1.7rem;
+  color: $light-blue;
+}
