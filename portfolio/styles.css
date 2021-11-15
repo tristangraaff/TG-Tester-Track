@@ -1,0 +1,24 @@
+body {
+  background-color: #181818;
+}
+
+h1 {
+  font-size: 200px;
+  color: #F6C90E;
+  color: #ffff2b;
+  border: 20px solid #4C5F7A;
+  border: 20px solid #253344;
+}
+
+h2 {
+  font-size: 200px;
+  color: #fdb25b;
+  color: #f0b0be;
+}
+
+p {
+  font-size: 100px;
+  color: #F1F1F1;
+  color: #8b99e9;
+}
+/*# sourceMappingURL=styles.css.map */
