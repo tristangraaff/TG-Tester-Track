@@ -2,21 +2,42 @@
 
 /* Typography */
 
+%heading-basic {
+  color: $heading-color;
+  font-family: "eurostile", sans-serif;
+}
+
+%text-basic {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.3rem;
+  color: $text-color;
+}
+
 h1,
 h2,
 h3 {
-  font-family: "eurostile", sans-serif;
-  color: ;
+  @extend %heading-basic;
 }
 
 h1 {
-  color: $light-yellow;
-  font-size: 3.3rem;
+  font-size: 2.7rem;
+}
+
+h2 {
+  font-size: 2.5rem;
+}
+
+h3 {
+  font-size: 2rem;
 }
 
 p,
 li {
-  font-family: "europa", sans-serif;
-  font-size: 1.7rem;
-  color: $light-blue;
+ @extend %text-basic;
+}
+
+a:link, 
+a:visited {
+  color: $text-color;
+  text-decoration: none;
 }

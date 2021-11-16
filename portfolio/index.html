@@ -4,6 +4,12 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="styles.css" />
     <title>Tristan Graaff</title>
   </head>
@@ -19,32 +25,36 @@
         </ul>
       </nav>
       <footer>
-        <img
-          src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png"
-          alt="Github logo"
-        />
-        <img
-          src="https://content.linkedin.com/content/dam/me/business/en-us/amp/brand-site/v2/bg/LI-Bug.svg.original.svg"
-          alt="LinkedIn logo"
-        />
+        <a href="https://github.com/tristangraaff">
+          <img
+            class="logo logo-github"
+            src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png"
+            alt="Github logo"
+          />
+        </a>
+        <a href="https://nl.linkedin.com/in/tristan-graaff-49110b1a9">
+          <img
+            class="logo logo-linkedin"
+            src="https://content.linkedin.com/content/dam/me/business/en-us/amp/brand-site/v2/bg/LI-Bug.svg.original.svg"
+            alt="LinkedIn logo"
+          />
+        </a>
       </footer>
     </header>
+    <div class="fixed-space-container"></div>
     <main>
       <section class="welcome">
-        <div class="welcome-intro">
-          <h1>Hi, I'm Tristan Graaff and I build websites and test software</h1>
-          <img src="NDL_261020263.jpg" alt="Tristan Graaff smiling" />
+        <div class="welcome-heading-bg">
+          <h1 class="welcome-heading">Hi, I'm <span>Tristan Graaff</span> and I <span>build websites</span> and <span>test software</span></h1>
         </div>
-        <div class="see-more welcome-see-more">
-          <p>Check out my skills</p>
-          <div class="welcome-arrow">
-            <div class="arrow-stripe arrow-stripe-left"></div>
-            <div class="arrow-stripe arrow-stripe-right"></div>
-          </div>
+          <!-- <img class="welcome-img" src="NDL_261020263.jpg" alt="Tristan Graaff smiling" /> -->
+        <div class="welcome-see-more">
+          <p class="check-out-more welcome-check-me">Check out my skills</p>
+          <img class="arrow welcome-arrow" src="arrow-24-128.png" alt="White arrow point down">
         </div>
       </section>
       <section class="skills">
-        <p>
+        <p class="skills-intro">
           "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
           eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
           minim veniam, quis nostrud exercitation ullamco laboris nisi ut
@@ -55,8 +65,8 @@
         </p>
         <div class="skills-container">
           <div class="skills-items skills-dev">
-            <h3>As a developer</h3>
-            <ul>
+            <h3>Development</h3>
+            <ul class="skills-lists">
               <li>HTML</li>
               <li>CSS</li>
               <li>SASS</li>
@@ -66,14 +76,14 @@
             </ul>
           </div>
           <div class="skills-items skills-tester">
-            <h3>As a tester</h3>
-            <ul>
+            <h3>Testing</h3>
+            <ul class="skills-lists">
               <li>Python(?)</li>
             </ul>
           </div>
           <div class="skills-items skills-social">
-            <h3>As a colleague</h3>
-            <ul>
+            <h3>Social</h3>
+            <ul class="skills-lists">
               <li>Reliable</li>
               <li>Communicative</li>
               <li>Fast learner</li>
@@ -81,12 +91,9 @@
             </ul>
           </div>
         </div>
-        <div class="see-more skills-see-more">
-          <p>Check out my work</p>
-          <div class="welcome-arrow">
-            <div class="arrow-stripe arrow-stripe-left"></div>
-            <div class="arrow-stripe arrow-stripe-right"></div>
-          </div>
+        <div class="skills-see-more">
+          <p class="check-out-more">Check out my work</p>
+          <img class="arrow" src="arrow-24-128.png" alt="White arrow point down">
         </div>
       </section>
       <section class="work">
@@ -129,8 +136,8 @@
         <div class="experience-item experience-item-italki">
           <h3>Online Dutch teacher</h3>
           <p>
-            I taught Dutch to students on the iTalki platform from all over the world and helped them
-            aquire Dutch language skills.
+            I taught Dutch to students on the iTalki platform from all over the
+            world and helped them aquire Dutch language skills.
           </p>
           <p>December 2017 - October 2021</p>
           <img
@@ -140,9 +147,7 @@
         </div>
         <div class="experience-item experience-item-techgrounds">
           <h3>Student testing / backend</h3>
-          <p>
-            Currently participating in a intensive six month course.
-          </p>
+          <p>Currently participating in a intensive six month course.</p>
           <p>November 2021 - April 2022</p>
           <img
             src="https://techgrounds.nl/wp-content/uploads/2021/05/cropped-logo-witte-letters-extra-groot-300x52.png"
@@ -154,20 +159,30 @@
         <form>
           <fieldset>
             <label>
-              <input type="text" name="name" placeholder="name" required>
+              <input type="text" name="name" placeholder="name" required />
             </label>
             <label>
-              <input type="email" name="email" placeholder="email" required>
+              <input type="email" name="email" placeholder="email" required />
             </label>
             <label>
-              <input type="text" name="subject" placeholder="subject" required>
+              <input
+                type="text"
+                name="subject"
+                placeholder="subject"
+                required
+              />
             </label>
             <label>
-              <input type="text" name="message" placeholder="message" required>
+              <input
+                type="text"
+                name="message"
+                placeholder="message"
+                required
+              />
             </label>
           </fieldset>
-          <input type="submit" value="Submit">
-          <input type="reset" value="Reset">
+          <input type="submit" value="Submit" />
+          <input type="reset" value="Reset" />
         </form>
       </section>
     </main>
