@@ -20,6 +20,10 @@
   }
 }
 
+%border {
+  border: 2px solid $border-color;
+}
+
 .check-out-more {
   @extend %check-out-more-text;
 }
@@ -29,7 +33,9 @@
 }
 
 main {
-  width: 75%;
+  width: 78%;
+  position: relative;
+  left: 11px;
 }
 
 section {
@@ -46,6 +52,7 @@ section {
   background-image: url("Purple-Smoke-PNG-Background-Image.png");
   background-size: cover;
   background-position: center;
+  z-index: -1;
 }
 
 .welcome-heading {
@@ -60,13 +67,6 @@ section {
   }
 }
 
-// .welcome-img {
-//   width: 50%;
-//   max-width: 400px;
-//   border-radius: 10%;
-//   margin: 0 auto;
-// }
-
 .skills {
   padding-top: 3em;
   display: flex;
@@ -74,10 +74,20 @@ section {
   justify-content: space-between;
 }
 
+.skills-intro {
+  width: 60%;
+  min-width: 400px;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
 .skills-container {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: center;
   margin-top: 2em;
+  flex-wrap: wrap;
+  row-gap: 35px;
+  column-gap: 35px;
 }
 
 .skills-items {
@@ -91,6 +101,24 @@ section {
   padding-left: 20px;
 }
 
+.work {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.experience-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.experience-item {
+  width: 45%;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
 @media (max-width: 768px) {
   .skills-intro {
     width: 80%;
@@ -101,8 +129,33 @@ section {
     flex-wrap: wrap;
     gap: 30px;
   }
+}
 
-  .skills-items {
-    
+@media (max-width: 768px) {
+
+  .check-out-more {
+    font-size: 1.2rem;
+  }
+
+  .arrow {
+    z-index: -1;
+  }
+
+  main {
+    width: 100%;
+    margin-top: 50px;
+    left: 0;
+  }
+
+  .welcome {
+    height: 90vh;
+  }
+
+  .welcome-heading {
+    min-width: 300px;
+  }
+
+  .skills-see-more {
+    margin-top: 3em;
   }
 }

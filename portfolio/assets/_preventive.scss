@@ -26,5 +26,16 @@ img {
   display: block;
 }
 
-
+@media (max-width: 768px) {
+  body {
+    flex-direction: column;
+  }
+  
+  .fixed-space-container {
+    visibility: hidden;
+    position: absolute;
+    width: 0;
+    height: 0;
+  }
+}
 
