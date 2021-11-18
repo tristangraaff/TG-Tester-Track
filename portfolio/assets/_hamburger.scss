@@ -1,4 +1,4 @@
-@media (max-width: 768px) {
+@media (max-width: 767px) {
   .hamburger {
     position: fixed;
     padding-top: 20px;
@@ -8,6 +8,8 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    z-index: 999;
+    
   }
 
   .hamburger-background {
@@ -18,6 +20,7 @@
     height: 50px;
     background: rgb(63, 62, 62);
     opacity: 0.5;
+    z-index: 999;
   }
   
   .hamburger-stripe {
@@ -25,6 +28,7 @@
     width: 40px;
     background: white;
     border-radius: 10px;
+    z-index: 999;
   }
 
   .hamburger-menu-open-bg {
@@ -33,7 +37,8 @@
     height: 70px;
     background-color: $background-color;
     border: 2px solid $border-color;
-    visibility: hidden;
+     visibility: hidden;
+    z-index: 999;
   }
 }
 

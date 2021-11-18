@@ -75,16 +75,17 @@ footer .logo-linkedin:hover {
   opacity: 1;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 767px) {
   header {
     top: 70px;
     background: #181818;
     width: 100%;
     max-width: 100%;
     height: 45vh;
-    visibility: hidden;
+    z-index: 999;
     -webkit-box-sizing: border-box;
             box-sizing: border-box;
+    visibility: hidden;
   }
   nav ul {
     margin-top: 0;
@@ -130,8 +131,8 @@ footer .logo-linkedin:hover {
           transform: rotate(90deg);
   -webkit-animation-name: moving-arrow;
           animation-name: moving-arrow;
-  -webkit-animation-duration: .5s;
-          animation-duration: .5s;
+  -webkit-animation-duration: 0.5s;
+          animation-duration: 0.5s;
   -webkit-animation-iteration-count: infinite;
           animation-iteration-count: infinite;
   -webkit-animation-direction: alternate;
@@ -259,6 +260,10 @@ section {
           justify-content: flex-end;
 }
 
+.experience {
+  padding-top: 2em;
+}
+
 .experience-container {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -268,19 +273,90 @@ section {
           justify-content: center;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
+  gap: 5px;
+  max-width: 1000px;
 }
 
 .experience-item {
+  background-color: #181818;
   width: 45%;
+  min-width: 270px;
+  margin-bottom: 2px;
   padding: 10px;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
+  border: 2px solid #253344;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
 
-@media (max-width: 768px) {
+.experience-item h3 {
+  -webkit-box-ordinal-group: 2;
+      -ms-flex-order: 1;
+          order: 1;
+}
+
+.experience-item img {
+  margin: 0 auto;
+  -webkit-box-ordinal-group: 5;
+      -ms-flex-order: 4;
+          order: 4;
+  width: 80px;
+  height: 80px;
+}
+
+.experience-item .experience-item-info {
+  -webkit-box-ordinal-group: 4;
+      -ms-flex-order: 3;
+          order: 3;
+}
+
+.experience-item .experience-item-date {
+  -webkit-box-ordinal-group: 3;
+      -ms-flex-order: 2;
+          order: 2;
+  font-size: 0.8rem;
+}
+
+.experience-item-italki img {
+  height: 60px;
+}
+
+.experience-item-techgrounds img {
+  width: 100px;
+  height: 50px;
+  padding-top: 1.3em;
+}
+
+.experience-item-teacher img {
+  width: 100px;
+  height: 50px;
+}
+
+.contact fieldset {
+  padding: 0;
+}
+
+.contact .name input {
+  width: 50%;
+  padding: 0;
+}
+
+.contact .mail input {
+  width: 45%;
+  padding: 0;
+}
+
+@media (max-width: 767px) {
   .skills-intro {
     width: 80%;
     margin: 0 auto;
+    min-width: auto;
   }
   .skills-container {
     -ms-flex-wrap: wrap;
@@ -289,7 +365,7 @@ section {
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 767px) {
   .check-out-more {
     font-size: 1.2rem;
   }
@@ -336,7 +412,7 @@ h2 {
 }
 
 h3 {
-  font-size: 2rem;
+  font-size: 1.5rem;
 }
 
 a:link,
@@ -345,7 +421,12 @@ a:visited {
   text-decoration: none;
 }
 
-@media (max-width: 768px) {
+.experience-item p {
+  font-size: 1.2rem;
+  padding: 1em 0;
+}
+
+@media (max-width: 767px) {
   h1 {
     font-size: 1.8rem;
   }
@@ -389,7 +470,7 @@ img {
   display: block;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 767px) {
   body {
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
@@ -404,7 +485,7 @@ img {
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 767px) {
   .hamburger {
     position: fixed;
     padding-top: 20px;
@@ -421,6 +502,7 @@ img {
     -webkit-box-pack: justify;
         -ms-flex-pack: justify;
             justify-content: space-between;
+    z-index: 999;
   }
   .hamburger-background {
     position: fixed;
@@ -430,12 +512,14 @@ img {
     height: 50px;
     background: #3f3e3e;
     opacity: 0.5;
+    z-index: 999;
   }
   .hamburger-stripe {
     height: 7px;
     width: 40px;
     background: white;
     border-radius: 10px;
+    z-index: 999;
   }
   .hamburger-menu-open-bg {
     position: fixed;
@@ -444,6 +528,7 @@ img {
     background-color: #1d1d1d;
     border: 2px solid #253344;
     visibility: hidden;
+    z-index: 999;
   }
 }
 /*# sourceMappingURL=styles.css.map */

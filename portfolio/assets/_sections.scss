@@ -11,12 +11,16 @@
   width: 50px;
   transform: rotate(90deg);
   animation-name: moving-arrow;
-  animation-duration: .5s;
+  animation-duration: 0.5s;
   animation-iteration-count: infinite;
   animation-direction: alternate;
   @keyframes moving-arrow {
-    from {bottom: 0;}
-    to {bottom: 1em;}
+    from {
+      bottom: 0;
+    }
+    to {
+      bottom: 1em;
+    }
   }
 }
 
@@ -107,22 +111,80 @@ section {
   justify-content: flex-end;
 }
 
+.experience {
+  padding-top: 2em;
+}
+
 .experience-container {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
+  gap: 5px;
+  max-width: 1000px;
 }
 
 .experience-item {
+  background-color: $background-color-2;
   width: 45%;
+  min-width: 270px;
+  margin-bottom: 2px;
   padding: 10px;
   box-sizing: border-box;
+  border: 2px solid $border-color;
+  display: flex;
+  flex-direction: column;
+  h3 {
+    order: 1;
+  }
+  img {
+    margin: 0 auto;
+    order: 4;
+    width: 80px;
+    height: 80px;
+  }
+  .experience-item-info {
+    order: 3;
+  }
+  .experience-item-date {
+    order: 2;
+    font-size: 0.8rem;
+  }
 }
 
-@media (max-width: 768px) {
+.experience-item-italki img {
+  height: 60px;
+}
+
+.experience-item-techgrounds img {
+  width: 100px;
+  height: 50px;
+  padding-top: 1.3em;
+}
+
+.experience-item-teacher img {
+  width: 100px;
+  height: 50px;
+}
+
+.contact {
+  fieldset {
+    padding: 0;
+  }
+  .name input {
+    width: 50%;
+    padding: 0;
+  }
+  .mail input {
+    width: 45%;
+    padding: 0;
+  }
+}
+
+@media (max-width: 767px) {
   .skills-intro {
     width: 80%;
     margin: 0 auto;
+    min-width: auto;
   }
 
   .skills-container {
@@ -131,8 +193,7 @@ section {
   }
 }
 
-@media (max-width: 768px) {
-
+@media (max-width: 767px) {
   .check-out-more {
     font-size: 1.2rem;
   }
