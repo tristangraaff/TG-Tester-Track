@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /* Header */
 header {
   background: #181818;
@@ -127,8 +128,8 @@ footer .logo-linkedin:hover {
   margin: 0 auto;
   position: relative;
   width: 50px;
-  -webkit-transform: rotate(90deg);
-          transform: rotate(90deg);
+  -webkit-transform: rotate(90deg) scale(0.8);
+          transform: rotate(90deg) scale(0.8);
   -webkit-animation-name: moving-arrow;
           animation-name: moving-arrow;
   -webkit-animation-duration: 0.5s;
@@ -181,10 +182,41 @@ section {
 }
 
 .welcome-heading-bg {
-  background-image: url("Purple-Smoke-PNG-Background-Image.png");
-  background-size: cover;
+  position: relative;
+  background-image: url("—Pngtree—colorful smoke abstract frame free_5390486.png");
+  background-size: contain;
   background-position: center;
+  background-repeat: no-repeat;
   z-index: -1;
+  height: 800px;
+  -webkit-animation-name: welcome-slide-in;
+          animation-name: welcome-slide-in;
+  -webkit-animation-duration: 5s;
+          animation-duration: 5s;
+  -webkit-animation-iteration-count: 1;
+          animation-iteration-count: 1;
+  -webkit-animation-direction: normal;
+          animation-direction: normal;
+  -webkit-transform: scale(1.3);
+          transform: scale(1.3);
+}
+
+@-webkit-keyframes welcome-slide-in {
+  from {
+    margin-top: 10em;
+  }
+  to {
+    margin-top: 0;
+  }
+}
+
+@keyframes welcome-slide-in {
+  from {
+    margin-top: 10em;
+  }
+  to {
+    margin-top: 0;
+  }
 }
 
 .welcome-heading {
@@ -193,7 +225,9 @@ section {
   margin: 0 auto;
   text-align: center;
   margin-bottom: 1em;
-  margin-top: 5em;
+  margin-top: 4em;
+  text-shadow: 3px 3px 10px #251266;
+  opacity: 0.8;
 }
 
 .welcome-heading span {
@@ -221,6 +255,10 @@ section {
   margin: 0 auto;
 }
 
+.skills-logos img {
+  width: 100px;
+}
+
 .skills-container {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -240,6 +278,13 @@ section {
   border: 2px solid #253344;
   padding: 1em;
   min-width: 200px;
+  -webkit-box-shadow: 3px 3px 10px #251266;
+          box-shadow: 3px 3px 10px #251266;
+}
+
+.skills-items:hover {
+  -webkit-box-shadow: 10px 10px 20px #251266;
+          box-shadow: 10px 10px 20px #251266;
 }
 
 .skills-lists {
@@ -338,18 +383,163 @@ section {
   height: 50px;
 }
 
-.contact fieldset {
-  padding: 0;
+.contact form {
+  width: 90%;
+  max-width: 600px;
+  margin: 0 auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-shadow: 3px 3px 10px red;
+          box-shadow: 3px 3px 10px red;
+}
+
+.contact .name-mail-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.contact .name {
+  width: 50%;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  border: 1px solid #253344;
 }
 
 .contact .name input {
+  width: 100%;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  background: #181818;
+  color: white;
+  border: none;
+}
+
+.contact .name input::-webkit-input-placeholder {
+  color: white;
+}
+
+.contact .name input:-ms-input-placeholder {
+  color: white;
+}
+
+.contact .name input::-ms-input-placeholder {
+  color: white;
+}
+
+.contact .name input::placeholder {
+  color: white;
+}
+
+.contact .mail {
   width: 50%;
-  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  border: 1px solid #253344;
 }
 
 .contact .mail input {
-  width: 45%;
-  padding: 0;
+  width: 100%;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  background: #181818;
+  color: white;
+  border: none;
+}
+
+.contact .mail input::-webkit-input-placeholder {
+  color: white;
+}
+
+.contact .mail input:-ms-input-placeholder {
+  color: white;
+}
+
+.contact .mail input::-ms-input-placeholder {
+  color: white;
+}
+
+.contact .mail input::placeholder {
+  color: white;
+}
+
+.contact .subject {
+  border: 1px solid #253344;
+}
+
+.contact .subject input {
+  width: 100%;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  background: #181818;
+  color: white;
+  border: none;
+}
+
+.contact .subject input::-webkit-input-placeholder {
+  color: white;
+}
+
+.contact .subject input:-ms-input-placeholder {
+  color: white;
+}
+
+.contact .subject input::-ms-input-placeholder {
+  color: white;
+}
+
+.contact .subject input::placeholder {
+  color: white;
+}
+
+.contact .message {
+  border: 1px solid #253344;
+}
+
+.contact .message textarea {
+  width: 100%;
+  height: 8em;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  background: #181818;
+  color: white;
+  border: none;
+}
+
+.contact .message textarea::-webkit-input-placeholder {
+  color: white;
+}
+
+.contact .message textarea:-ms-input-placeholder {
+  color: white;
+}
+
+.contact .message textarea::-ms-input-placeholder {
+  color: white;
+}
+
+.contact .message textarea::placeholder {
+  color: white;
+}
+
+.contact .form-buttons-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+}
+
+.contact .form-buttons-container input {
+  width: 50%;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  background: #181818;
+  color: white;
 }
 
 @media (max-width: 767px) {
@@ -379,6 +569,9 @@ section {
   }
   .welcome {
     height: 90vh;
+  }
+  .welcome-heading-bg {
+    height: 50vh;
   }
   .welcome-heading {
     min-width: 300px;

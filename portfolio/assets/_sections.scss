@@ -9,7 +9,7 @@
   margin: 0 auto;
   position: relative;
   width: 50px;
-  transform: rotate(90deg);
+  transform: rotate(90deg) scale(0.8);
   animation-name: moving-arrow;
   animation-duration: 0.5s;
   animation-iteration-count: infinite;
@@ -53,10 +53,26 @@ section {
 }
 
 .welcome-heading-bg {
-  background-image: url("Purple-Smoke-PNG-Background-Image.png");
-  background-size: cover;
+  position: relative;
+  background-image: url("—Pngtree—colorful smoke abstract frame free_5390486.png");
+  background-size: contain;
   background-position: center;
+  background-repeat: no-repeat;
   z-index: -1;
+  height: 800px;
+  animation-name: welcome-slide-in;
+  animation-duration: 5s;
+  animation-iteration-count: 1;
+  animation-direction: normal;
+  transform: scale(1.3);
+  @keyframes welcome-slide-in {
+    from {
+      margin-top: 10em;
+    }
+    to {
+      margin-top: 0;
+    }
+  }
 }
 
 .welcome-heading {
@@ -65,7 +81,13 @@ section {
   margin: 0 auto;
   text-align: center;
   margin-bottom: 1em;
-  margin-top: 5em;
+  margin-top: 4em;
+  // text-shadow: 2px 0 0 rgb(255, 0, 0), -2px 0 0 rgb(0, 0, 0),
+  //   0 2px 0 rgb(0, 0, 0), 0 -2px 0 rgb(0, 0, 0), 1px 1px rgb(0, 0, 0),
+  //   -1px -1px 0 rgb(0, 0, 0), 1px -1px 0 rgb(0, 0, 0), -1px 1px 0 rgb(0, 0, 0);
+  //   transform: scale(0.7);
+  text-shadow: 3px 3px 10px rgb(37, 18, 102);
+  opacity: 0.8;
   span {
     font-weight: bolder;
   }
@@ -85,6 +107,10 @@ section {
   margin: 0 auto;
 }
 
+.skills-logos img{
+  width: 100px;
+}
+
 .skills-container {
   display: flex;
   justify-content: center;
@@ -98,6 +124,10 @@ section {
   border: 2px solid $border-color;
   padding: 1em;
   min-width: 200px;
+  box-shadow: 3px 3px 10px rgb(37, 18, 102);
+  &:hover {
+    box-shadow: 10px 10px 20px rgb(37, 18, 102);
+  }
 }
 
 .skills-lists {
@@ -167,16 +197,94 @@ section {
 }
 
 .contact {
-  fieldset {
-    padding: 0;
+  form {
+    width: 90%;
+    max-width: 600px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 3px 3px 10px red;
   }
-  .name input {
+
+  .name-mail-container {
+    display: flex;
+  }
+
+  .name {
     width: 50%;
-    padding: 0;
+    box-sizing: border-box;
+    border: 1px solid $border-color;
   }
+
+  .name input {
+    width: 100%;
+    box-sizing: border-box;
+    background: $background-color-2;
+    color: white;
+    border: none;
+    &::placeholder {
+      color: white;
+    }
+  }
+
+  .mail {
+    width: 50%;
+    box-sizing: border-box;
+    border: 1px solid $border-color;
+  }
+
   .mail input {
-    width: 45%;
-    padding: 0;
+    width: 100%;
+    box-sizing: border-box;
+    background: $background-color-2;
+    color: white;
+    border: none;
+    &::placeholder {
+      color: white;
+    }
+  }
+
+  .subject {
+    border: 1px solid $border-color;
+  }
+
+  .subject input {
+    width: 100%;
+    box-sizing: border-box;
+    background: $background-color-2;
+    color: white;
+    border: none;
+    &::placeholder {
+      color: white;
+    }
+  }
+
+  .message {
+    border: 1px solid $border-color;
+  }
+
+  .message textarea {
+    width: 100%;
+    height: 8em;
+    box-sizing: border-box;
+    background: $background-color-2;
+    color: white;
+    border: none;
+    &::placeholder {
+      color: white;
+    }
+  }
+
+  .form-buttons-container {
+    display: flex;
+    width: 100%;
+  }
+
+  .form-buttons-container input {
+    width: 50%;
+    box-sizing: border-box;
+    background: $background-color-2;
+    color: white;
   }
 }
 
@@ -210,6 +318,10 @@ section {
 
   .welcome {
     height: 90vh;
+  }
+
+  .welcome-heading-bg {
+    height: 50vh;
   }
 
   .welcome-heading {
