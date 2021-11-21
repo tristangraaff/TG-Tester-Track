@@ -1,20 +1,85 @@
 %check-out-more-text {
   text-align: center;
-  color: $heading-color;
+  color: $background-color;
   font-size: 1.6rem;
   margin-bottom: 1em;
+  text-shadow: 3px 3px 10px rgb(173, 154, 238);
 }
 
-%arrow {
-  margin: 0 auto;
-  position: relative;
-  width: 50px;
-  transform: rotate(90deg) scale(0.8);
-  animation-name: moving-arrow;
+%border {
+  border: 2px solid $border-color;
+}
+
+%background-img-container {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  z-index: -1;
+  animation-name: flickering-line;
+  animation-duration: 10s;
+  animation-iteration-count: infinite;
+  animation-direction: normal;
+  background-size: cover;
+  overflow: hidden;
+  @keyframes flickering-line {
+    0% {
+      background-size: cover;
+    }
+    0.5% {
+    background-size: 0 0;
+    }
+    1% {
+      background-size: cover;
+      
+    }
+    1.5% {
+      background-size: 0 0;
+    }
+    2% {
+      background-size: cover;
+    }
+    2.1% {
+      background-size: 0 0;
+    }
+    2.3% {
+      background-size: cover;
+    }
+    2.4% {
+      background-size: 0 0;
+    }
+    2.6% {
+      background-size: cover;
+    }
+    3% {
+      background-size: 0 0;
+    }
+    3.1% {
+      background-size: cover;
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.4;
+    }
+    100% {
+      background-size: cover;
+      opacity: 1;
+    }
+  }
+}
+
+.arrow {
+  display: inline-block;
+  padding: 3px;
+  transform: scale(2) rotate(45deg);
+  -webkit-transform: scale(3) rotate(45deg);
+  animation-name: moving-arrow-2;
   animation-duration: 0.5s;
   animation-iteration-count: infinite;
   animation-direction: alternate;
-  @keyframes moving-arrow {
+  position: relative;
+  margin-bottom: 1em;
+  border-radius: 1px;
+  @keyframes moving-arrow-2 {
     from {
       bottom: 0;
     }
@@ -24,32 +89,36 @@
   }
 }
 
-%border {
-  border: 2px solid $border-color;
+.arrow-white {
+  border: solid white;
+  border-width: 0 3px 3px 0;
+}
+
+.arrow-black {
+  border: solid $background-color;
+  border-width: 0 3px 3px 0;
 }
 
 .check-out-more {
   @extend %check-out-more-text;
 }
 
-.arrow {
-  @extend %arrow;
-}
-
 main {
   width: 78%;
-  position: relative;
-  left: 11px;
+  left: 50px;
 }
 
 section {
-  height: 100vh;
+  padding-top: 8em;
 }
 
 .welcome {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  height: 100vh;
+  width: 100%;
+  background-color: $background-color-super-light;
 }
 
 .welcome-heading-bg {
@@ -58,7 +127,6 @@ section {
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
-  z-index: -1;
   height: 800px;
   animation-name: welcome-slide-in;
   animation-duration: 5s;
@@ -76,6 +144,7 @@ section {
 }
 
 .welcome-heading {
+  color: $background-color;
   width: 45%;
   min-width: 500px;
   margin: 0 auto;
@@ -86,35 +155,73 @@ section {
   //   0 2px 0 rgb(0, 0, 0), 0 -2px 0 rgb(0, 0, 0), 1px 1px rgb(0, 0, 0),
   //   -1px -1px 0 rgb(0, 0, 0), 1px -1px 0 rgb(0, 0, 0), -1px 1px 0 rgb(0, 0, 0);
   //   transform: scale(0.7);
-  text-shadow: 3px 3px 10px rgb(37, 18, 102);
+  text-shadow: 3px 3px 10px rgb(173, 154, 238);
   opacity: 0.8;
   span {
     font-weight: bolder;
   }
 }
 
+.welcome-see-more {
+  text-align: center;
+  color: $background-color;
+}
+
 .skills {
-  padding-top: 3em;
+  height: 100vh;
+  
+  p,
+  li {
+    color: $background-color-light;
+  }
   display: flex;
   flex-direction: column;
+  background-size: 0 0;
   justify-content: space-between;
+
+}
+
+.skills-background-img-container {
+  background-image: url("grijze-streep.png");
+  @extend %background-img-container;
+}
+
+.skills-heading {
+  color: $background-color-light;
+  padding-left: 50px;
 }
 
 .skills-intro {
   width: 60%;
   min-width: 400px;
   max-width: 700px;
-  margin: 0 auto;
+  padding-left: 50px;
 }
 
-.skills-logos img{
-  width: 100px;
+.skills-logos {
+  display: flex;
+  gap: 1em;
+  padding-left: 50px;
+  margin-top: 7em;
+}
+
+.skills-logos {
+  img {
+    width: 60px;
+  }
+  .html-logo {
+    width: 75px;
+  }
+  .wordpress-logo {
+    width: 65px;
+  }
 }
 
 .skills-container {
   display: flex;
-  justify-content: center;
-  margin-top: 2em;
+  justify-content: flex-start;
+  padding-left: 50px;
+  margin-top: 6em;
   flex-wrap: wrap;
   row-gap: 35px;
   column-gap: 35px;
@@ -135,22 +242,77 @@ section {
   padding-left: 20px;
 }
 
+.skills-see-more {
+  text-align: center;
+  margin-top: 4em;
+}
+
 .work {
+  padding: 8em 50px 0 50px;
+  background: $background-color-super-light;
+  height: 100vh;
+  background-image: url("grijze-streep-2.png");
+  background-size: cover;
+}
+
+// .work-background-img-container {
+//   background-image: url("grijze-streep-2.png");
+//   animation-delay: 5s;
+//   background-size: cover;
+//   @extend %background-img-container;
+// }
+
+.work-heading {
+  color: $background-color;
+}
+
+.work-container {
   display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
+  flex-wrap: wrap;
+  opacity: 0.95;
+}
+
+.work-item {
+  border: 2px solid $border-color;
+  padding: 1em;
+  height: 200px;
+  box-shadow: 3px 3px 10px rgb(37, 18, 102);
+  background: $background-color;
+  transition-property: box-shadow, transform;
+  transition-duration: 0.2s;
+  flex-grow: 1;
+  margin-right: 10px;
+  margin-top: 10px;
+  color: $background-color-light;
+  &:hover {
+    box-shadow: 10px 10px 20px rgb(37, 18, 102);
+    transform: scale(1.1);
+  }
+}
+
+.work-see-more {
+  text-align: center;
+  margin-top: 4em;
 }
 
 .experience {
-  padding-top: 2em;
+  background-image: url("grijze-streep-3.png");
+  background-size: cover;
+  padding-left: 50px;
+}
+
+.experience-heading {
+  color: $background-color-light;
 }
 
 .experience-container {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   flex-wrap: wrap;
   gap: 5px;
   max-width: 1000px;
+  margin-top: 2em;
+  opacity: 0.95;
 }
 
 .experience-item {
@@ -196,14 +358,34 @@ section {
   height: 50px;
 }
 
+.experience-see-more {
+  margin-top: 4em;
+  text-align: center;
+  .check-out-more {
+    color: $background-color-light;
+  }
+}
+
 .contact {
+  padding-left: 50px;
+  .contact-heading {
+    color: $background-color;
+    text-shadow: 3px 3px 10px rgb(173, 154, 238);
+    opacity: 0.8;
+  }
+  padding-top: 8em;
+  height: 100vh;
+  background-color: $background-color-super-light;
+  background-image: url("bibw-d-body-bottom-quote-water.png");
+
   form {
-    width: 90%;
-    max-width: 600px;
-    margin: 0 auto;
-    display: flex;
+    opacity: 0.9;
+    width: 85%;
+    max-width: 800px;
+    display: flex;   
     flex-direction: column;
-    box-shadow: 3px 3px 10px red;
+    box-shadow: 3px 3px 10px rgb(61, 28, 248);
+    background: rgb(55, 13, 104);
   }
 
   .name-mail-container {
@@ -218,6 +400,7 @@ section {
 
   .name input {
     width: 100%;
+    height: 40px;
     box-sizing: border-box;
     background: $background-color-2;
     color: white;
@@ -235,6 +418,7 @@ section {
 
   .mail input {
     width: 100%;
+    height: 40px;
     box-sizing: border-box;
     background: $background-color-2;
     color: white;
@@ -250,6 +434,7 @@ section {
 
   .subject input {
     width: 100%;
+    height: 40px;
     box-sizing: border-box;
     background: $background-color-2;
     color: white;

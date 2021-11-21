@@ -60,87 +60,56 @@
         <!-- <img class="welcome-img" src="NDL_261020263.jpg" alt="Tristan Graaff smiling" /> -->
         <div class="welcome-see-more">
           <p class="check-out-more welcome-check-me">Check out my skills</p>
-          <img
-            class="arrow welcome-arrow"
-            src="arrow-24-128.png"
-            alt="White arrow point down"
-          />
+          <i class="arrow arrow-black"></i>
         </div>
       </section>
-      <section class="skills">
-        <p class="skills-intro">
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat. Duis aute irure dolor in
-          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-          culpa qui officia deserunt mollit anim id est laborum."
-        </p>
+      <!-- <section class="skills">
+        <div class="skills-background-img-container"></div>
+        <div class="skills-text-container">
+          <h2 class="skills-heading">Skills.</h2>
+          <p class="skills-intro">
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+            minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+            aliquip ex ea commodo consequat. Duis aute irure dolor in
+            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+            culpa qui officia deserunt mollit anim id est laborum."
+          </p>
+        </div>
         <div class="skills-logos">
-          <img src="https://www.w3.org/html/logo/downloads/HTML5_Logo_128.png" alt="HTML logo">
+          <img class="html-logo" src="https://www.w3.org/html/logo/downloads/HTML5_Logo_128.png" alt="HTML logo">
           <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/CSS3_logo_and_wordmark.svg/1200px-CSS3_logo_and_wordmark.svg.png" alt="CSS logo">
           <img src="https://sass-lang.com/assets/img/logos/logo-b6e1ef6e.svg" alt="SASS logo">
           <img src="https://seeklogo.com/images/J/javascript-logo-E967E87D74-seeklogo.com.png" alt="JavaScript logo">
           <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9Ii0xMS41IC0xMC4yMzE3NCAyMyAyMC40NjM0OCI+CiAgPHRpdGxlPlJlYWN0IExvZ288L3RpdGxlPgogIDxjaXJjbGUgY3g9IjAiIGN5PSIwIiByPSIyLjA1IiBmaWxsPSIjNjFkYWZiIi8+CiAgPGcgc3Ryb2tlPSIjNjFkYWZiIiBzdHJva2Utd2lkdGg9IjEiIGZpbGw9Im5vbmUiPgogICAgPGVsbGlwc2Ugcng9IjExIiByeT0iNC4yIi8+CiAgICA8ZWxsaXBzZSByeD0iMTEiIHJ5PSI0LjIiIHRyYW5zZm9ybT0icm90YXRlKDYwKSIvPgogICAgPGVsbGlwc2Ugcng9IjExIiByeT0iNC4yIiB0cmFuc2Zvcm09InJvdGF0ZSgxMjApIi8+CiAgPC9nPgo8L3N2Zz4K" alt="React logo">
-          <img src="data:image/png;base64,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" alt="Wordpress logo">
-        </div>
-        <div class="skills-container">
-          <div class="skills-items skills-dev">
-            <h3>Development</h3>
-            <ul class="skills-lists">
-              <li>HTML</li>
-              <li>CSS</li>
-              <li>SASS</li>
-              <li>JavaScript</li>
-              <li>React</li>
-              <li>Wordpress (Divi)</li>
-            </ul>
-          </div>
-          <div class="skills-items skills-tester">
-            <h3>Testing</h3>
-            <ul class="skills-lists">
-              <li>Python(?)</li>
-            </ul>
-          </div>
-          <div class="skills-items skills-social">
-            <h3>Social</h3>
-            <ul class="skills-lists">
-              <li>Reliable</li>
-              <li>Communicative</li>
-              <li>Fast learner</li>
-              <li>Broad interest</li>
-            </ul>
-          </div>
+          <img class="wordpress-logo" src="pngwing.com.png" alt="Wordpress logo">
         </div>
         <div class="skills-see-more">
           <p class="check-out-more">Check out my work</p>
-          <img
-            class="arrow"
-            src="arrow-24-128.png"
-            alt="White arrow point down"
-          />
+          <i class="arrow arrow-white"></i>
         </div>
-      </section>
-      <section class="work">
-        <div class="work-container">
-          <div class="work-item"></div>
-          <div class="work-item"></div>
-          <div class="work-item"></div>
-          <div class="work-item"></div>
-          <div class="work-item"></div>
-          <div class="work-item"></div>
+      </section> -->
+      <!-- <section class="work">
+        <div class="work-background-img-container"></div>
+        <h2 class="work-heading">Work.</h2>
+        <div class="work-container work-top">
+          <div class="work-item">Coming soon..</div>
+          <div class="work-item">Coming soon..</div>
+          <div class="work-item">Coming soon..</div>
+        </div>
+        <div class="work-container work-bottom">
+          <div class="work-item">Coming soon..</div>
+          <div class="work-item">Coming soon..</div>
+          <div class="work-item">Coming soon..</div>
         </div>
         <div class="work-see-more">
           <p class="check-out-more welcome-check-me">Check out my experience</p>
-          <img
-            class="arrow welcome-arrow"
-            src="arrow-24-128.png"
-            alt="White arrow point down"
-          />
+          <i class="arrow arrow-black"></i>
         </div>
       </section>
       <section class="experience">
+        <h2 class="experience-heading">Experience.</h2>
         <div class="experience-container">
           <div class="experience-item experience-item-winc">
             <h3>Student front-end development</h3>
@@ -191,8 +160,13 @@
             />
           </div>
         </div>
+        <div class="experience-see-more">
+          <p class="check-out-more welcome-check-me">Contact me</p>
+          <i class="arrow arrow-white"></i>
+        </div>
       </section>
       <section class="contact">
+        <h2 class="contact-heading">Contact me.</h2>
         <form>
           <div class="name-mail-container">
             <label class="name">
@@ -213,7 +187,7 @@
             <input type="reset" value="Reset" />
           </div>
         </form>
-      </section>
+      </section> -->
     </main>
   </body>
 </html>
