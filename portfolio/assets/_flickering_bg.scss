@@ -1,0 +1,56 @@
+%background-img-container {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  z-index: -1;
+  animation-name: flickering-line;
+  animation-duration: 10s;
+  animation-iteration-count: infinite;
+  animation-direction: normal;
+  background-size: cover;
+  overflow: hidden;
+  @keyframes flickering-line {
+    0% {
+      background-size: cover;
+    }
+    0.5% {
+      background-size: 0 0;
+    }
+    1% {
+      background-size: cover;
+      
+    }
+    1.5% {
+      background-size: 0 0;
+    }
+    2% {
+      background-size: cover;
+    }
+    2.1% {
+      background-size: 0 0;
+    }
+    2.3% {
+      background-size: cover;
+    }
+    2.4% {
+      background-size: 0 0;
+    }
+    2.6% {
+      background-size: cover;
+    }
+    3% {
+      background-size: 0 0;
+    }
+    3.1% {
+      background-size: cover;
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.4;
+    }
+    100% {
+      background-size: cover;
+      opacity: 1;
+    }
+  }
+}

@@ -47,6 +47,13 @@ a:visited {
   padding: 1em 0;
 }
 
+.skills {
+  p,
+  li {
+    color: $background-color-light;
+  }
+}
+
 textarea, input {
   @extend %text-basic;
 }

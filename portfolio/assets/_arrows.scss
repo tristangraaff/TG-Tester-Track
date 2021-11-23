@@ -1,0 +1,31 @@
+.arrow {
+  display: inline-block;
+  padding: 3px;
+  transform: scale(2) rotate(45deg);
+  -webkit-transform: scale(3) rotate(45deg);
+  animation-name: moving-arrow-2;
+  animation-duration: 0.5s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  position: relative;
+  margin-bottom: 1em;
+  border-radius: 1px;
+  @keyframes moving-arrow-2 {
+    from {
+      bottom: 0;
+    }
+    to {
+      bottom: 1em;
+    }
+  }
+}
+
+.arrow-white {
+  border: solid white;
+  border-width: 0 3px 3px 0;
+}
+
+.arrow-black {
+  border: solid $background-color;
+  border-width: 0 3px 3px 0;
+}
