@@ -5,11 +5,30 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
-  <script src="script.js"></script>
+  
 </head>
 <body>
   <button onclick="myFunction()">Functional Buttons!</button>
   <br>
   <input onchange="myFunction()">
+  <br>
+  <button id="b1" onclick="pressButtonOne()">Button #1</button>
+  <button id="b2" onclick="pressButtonTwo()">Button #2</button>
+  <br>
+  <button onclick="pressButton(this)">Button #3</button>
+  <button onclick="pressButton(this)">Button #4</button>
+  <br>
+  <button onclick="pressHelloButton()">Hello Button</button>
+  <input id="text-input" type="text" value="5">
+  <br>
+  <div class="get-elements-by-class-name-test"></div>
+  <div class="get-elements-by-class-name-test"></div>
+  <div class="get-elements-by-class-name-test"></div>
+  <div class="get-elements-by-class-name-test"></div>
+  <input id="text-input-2" type="text" oninput="logTextInput2(this)">
+  <br>
+  <button id="random-number-button" onclick="logRandomNumber()">RANDOM!</button>
+  <div class="input-name"></div>
 </body>
+<script src="script.js"></script>
 </html>
