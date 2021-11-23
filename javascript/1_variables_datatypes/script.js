@@ -19,7 +19,7 @@ console.log(letOefening2);
 // //C
 // const constOef = "Const Tekst";
 // console.log(constOef);
-// const constOef = "Const Teksr Twee";
+// constOef = "Const Teksr Twee";
 // //Verw: reassign error
 // console.log(constOef);
 
@@ -136,7 +136,7 @@ someNumberr = 5;
 console.log(someNumberr);
 //Res: 5
 someNumberr = Boolean;
-console.log(someNumberr);
+console.log( ! someNumberr);
 //Res: f Boolean() { [native code] }
 someNumberr = false;
 console.log(someNumberr);
