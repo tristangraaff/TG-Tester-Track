@@ -99,6 +99,90 @@ const selectRandomFruit = (fruits) => {
 };
 console.log(selectRandomFruit(fruitsArray));
 
+//E
+console.log(fruitsArray.length);
+//F
+// Ik krijg geen error?
+
+//G
+fruitsArray.splice(0, 1, 'Peer');
+console.log(fruitsArray);
+
+//G & H
+const fruitsArrayCopy = ["Appel", "Aardbei", "Peer", "Mango", "Papaya", "Tomaat"]; 
+console.log(fruitsArrayCopy);
+fruitsArrayCopy.splice(2, 0, fruitsArrayCopy[2]);
+console.log(fruitsArrayCopy);
+fruitsArrayCopy.splice(0, 1);
+console.log(fruitsArrayCopy);
+
+delete fruitsArrayCopy[2];
+console.log(fruitsArrayCopy);
+fruitsArrayCopy.length = 5;
+console.log(fruitsArrayCopy);
+
+//5.2
+const dutchSports = ["Voetbal", "Hockey", "Schaatsen"];
+//A
+for (let i = 0; i < 3; i++) {
+  console.log(dutchSports[i]);
+};
+
+//B
+for (const index in dutchSports) {
+  console.log(dutchSports[index]);
+};
+
+for (const item of dutchSports) {
+  console.log(item);
+};
+
+//C
+for (let i = 0; i < 20; i++){
+  console.log(i + 1);
+};
+
+//D & E & F
+for (let i = 0; i < 3; i++) {
+  for (let i = 1; i < 11; i++) {
+    console.log(i);
+  };
+  for (let i = 2; i < 22; i += 2) {
+    console.log(i);
+  };
+  for (let i = 3; i < 31; i += 3) {
+    console.log(i);
+  };
+};
+
+//G
+let fibonacciArray = [0, 1];
+for (let i = 2; i < 50; i++) {
+  fibonacciArray.push(fibonacciArray[i - 1] + fibonacciArray[i - 2]);
+};
+console.log(fibonacciArray);
+
+//H 
+let randomNumbers = [2, 7, 5, 10, 4, 9, 3, 1, 8, 6];
+for (let i = 0; i < randomNumbers.length; i++ ) {
+  for (let i = 0; i < randomNumbers.length; i++) {
+    if (randomNumbers[i] > randomNumbers[i + 1]) {
+      const lowerNumber = randomNumbers[i];
+      randomNumbers[i] = randomNumbers[i + 1];
+      randomNumbers[i + 1] = lowerNumber;
+      console.log(randomNumbers);
+    };
+  };
+};
+
+//5.3
+//A
+
+
+
+
+
+
 
 
 
