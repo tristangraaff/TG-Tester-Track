@@ -30,10 +30,11 @@ console.log(testString.substring(5,1));
 //B
 console.log(testString.slice(5,1));
 //C
-console.log(testString.substring(-10, -1));
+console.log(testString.substring(-10, -1)); //hij ziet ze beide als 0
 console.log(testString.slice(-10, -1));
 
 //2.3
 console.log(someKittens.split(" "));
+console.log(someKittens.split("k"));
 console.log(someKittens.split(""));
 console.log(someKittens.split());
