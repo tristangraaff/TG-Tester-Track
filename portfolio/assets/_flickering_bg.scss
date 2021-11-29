@@ -54,3 +54,46 @@
     }
   }
 }
+
+%sliding-logos-1 {
+  animation-duration: 15s;
+  animation-iteration-count: infinite;
+  animation-direction: normal;
+  animation-timing-function: linear;
+  animation-name: sliding-logos-1;
+  @keyframes sliding-logos-1 {
+    0% {
+      transform: translateX(190%);
+    }
+    100% {
+      transform: translateX(-190%);
+    }
+  }
+}
+
+%sliding-logos-2 {
+  animation-duration: 15s;
+  animation-iteration-count: infinite;
+  animation-direction: normal;
+  animation-timing-function: linear;
+  animation-name: sliding-logos-2;
+  animation-delay: 6.5s;
+  visibility: hidden;
+  @keyframes sliding-logos-2 {
+    0% {
+      transform: translateX(100%);
+      visibility: visible;
+    }
+    100% {
+      transform: translateX(-280%);
+    }
+  }
+}
+
+%sliding-logos-left {
+  animation-name: sliding-logos-left;
+}
+
+%sliding-logos-right {
+  // animation-name: sliding-logos-right;
+}

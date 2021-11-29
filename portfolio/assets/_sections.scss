@@ -95,46 +95,58 @@ section {
 
   .skills-logos {
     display: flex;
-    gap: 1em;
-    padding-left: 50px;
+    margin-left: 50px;
     margin-top: 7em;
-  }
-
-  .skills-logos {
+    background: black;
+    max-width: 600px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 10px 10px 5px rgba(0,0,0,.5);
+    opacity: 0.95;
     img {
       width: 60px;
     }
     .html-logo {
       width: 75px;
+      
     }
     .wordpress-logo {
       width: 65px;
     }
   }
 
-  .skills-container {
+  .skills-logos-animation-container {
     display: flex;
-    justify-content: flex-start;
-    padding-left: 50px;
-    margin-top: 6em;
-    flex-wrap: wrap;
-    row-gap: 35px;
-    column-gap: 35px;
+    gap: 1em;
+    
+    z-index: 999;
   }
 
-  .skills-items {
-    border: 2px solid $border-color;
-    padding: 1em;
-    min-width: 200px;
-    box-shadow: 3px 3px 10px rgb(37, 18, 102);
-    &:hover {
-      box-shadow: 10px 10px 20px rgb(37, 18, 102);
-    }
+  .ani-cont-1 {
+    @extend %sliding-logos-1;
+    // @extend %sliding-logos-left;
+    // @keyframes sliding-logos-left {
+    //   0% {
+    //     transform: translateX(100%);
+    //   }
+    //   100% {
+    //     transform: translateX(-100%);
+    //   }
+    // }
   }
 
-  .skills-lists {
-    list-style: square;
-    padding-left: 20px;
+  .ani-cont-2 {
+    
+    @extend %sliding-logos-2;
+    // @extend %sliding-logos-right;
+    // @keyframes sliding-logos-right {
+    //   0% {
+    //     transform: translateX(100%);
+    //   }
+    //   100% {
+    //     transform: translateX(-100%);
+    //   }
+    // }
   }
 
   .skills-see-more {

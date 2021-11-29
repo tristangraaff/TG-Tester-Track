@@ -253,9 +253,15 @@ section {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  gap: 1em;
-  padding-left: 50px;
+  margin-left: 50px;
   margin-top: 7em;
+  background: black;
+  max-width: 600px;
+  overflow: hidden;
+  position: relative;
+  -webkit-box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.5);
+          box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.5);
+  opacity: 0.95;
 }
 
 .skills .skills-logos img {
@@ -270,38 +276,12 @@ section {
   width: 65px;
 }
 
-.skills .skills-container {
+.skills .skills-logos-animation-container {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: flex-start;
-  padding-left: 50px;
-  margin-top: 6em;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-  row-gap: 35px;
-  -webkit-column-gap: 35px;
-          column-gap: 35px;
-}
-
-.skills .skills-items {
-  border: 2px solid #253344;
-  padding: 1em;
-  min-width: 200px;
-  -webkit-box-shadow: 3px 3px 10px #251266;
-          box-shadow: 3px 3px 10px #251266;
-}
-
-.skills .skills-items:hover {
-  -webkit-box-shadow: 10px 10px 20px #251266;
-          box-shadow: 10px 10px 20px #251266;
-}
-
-.skills .skills-lists {
-  list-style: square;
-  padding-left: 20px;
+  gap: 1em;
+  z-index: 999;
 }
 
 .skills .skills-see-more {
@@ -899,6 +879,81 @@ img {
   100% {
     background-size: cover;
     opacity: 1;
+  }
+}
+
+.skills .ani-cont-1 {
+  -webkit-animation-duration: 15s;
+          animation-duration: 15s;
+  -webkit-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
+  -webkit-animation-direction: normal;
+          animation-direction: normal;
+  -webkit-animation-timing-function: linear;
+          animation-timing-function: linear;
+  -webkit-animation-name: sliding-logos-1;
+          animation-name: sliding-logos-1;
+}
+
+@-webkit-keyframes sliding-logos-1 {
+  0% {
+    -webkit-transform: translateX(190%);
+            transform: translateX(190%);
+  }
+  100% {
+    -webkit-transform: translateX(-190%);
+            transform: translateX(-190%);
+  }
+}
+
+@keyframes sliding-logos-1 {
+  0% {
+    -webkit-transform: translateX(190%);
+            transform: translateX(190%);
+  }
+  100% {
+    -webkit-transform: translateX(-190%);
+            transform: translateX(-190%);
+  }
+}
+
+.skills .ani-cont-2 {
+  -webkit-animation-duration: 15s;
+          animation-duration: 15s;
+  -webkit-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
+  -webkit-animation-direction: normal;
+          animation-direction: normal;
+  -webkit-animation-timing-function: linear;
+          animation-timing-function: linear;
+  -webkit-animation-name: sliding-logos-2;
+          animation-name: sliding-logos-2;
+  -webkit-animation-delay: 6.5s;
+          animation-delay: 6.5s;
+  visibility: hidden;
+}
+
+@-webkit-keyframes sliding-logos-2 {
+  0% {
+    -webkit-transform: translateX(100%);
+            transform: translateX(100%);
+    visibility: visible;
+  }
+  100% {
+    -webkit-transform: translateX(-280%);
+            transform: translateX(-280%);
+  }
+}
+
+@keyframes sliding-logos-2 {
+  0% {
+    -webkit-transform: translateX(100%);
+            transform: translateX(100%);
+    visibility: visible;
+  }
+  100% {
+    -webkit-transform: translateX(-280%);
+            transform: translateX(-280%);
   }
 }
 /*# sourceMappingURL=styles.css.map */

@@ -65,7 +65,7 @@ const pressHelloButton = function () {
 const textInputElement = document.getElementById("text-input");
 const logTextInput = function (textInputElement) {
   console.log(textInputElement.value + 2);
-  const result =+ 1;
+  const result = +1;
   return textInputElement.value + 2;
 };
 console.log(logTextInput(textInputElement));
