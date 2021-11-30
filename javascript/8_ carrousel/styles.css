@@ -7,6 +7,7 @@ body {
   margin: 0 auto;
   position: relative;
   height: 700px;
+  overflow: hidden;
 }
 
 .carrousel:before,
@@ -39,7 +40,30 @@ img {
   position: absolute; 
   border-radius: 10px;
   height: 700px;
+  display: none;
+  /* right: 100%; */
 }
+
+.slidingImg {
+  transition: 2s;
+  right: 0%;
+}
+
+/* .img-2 {
+  left: 100%;
+}
+
+.img-3 {
+  left: 200%;
+}
+
+.img-4 {
+  left: -100%;
+}
+
+.img-5 {
+  left: -200%;
+} */
 
 .arrow {
   display: inline-block;
