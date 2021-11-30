@@ -29,3 +29,10 @@
   border: solid $background-color;
   border-width: 0 3px 3px 0;
 }
+
+@media (max-width: 767px) {
+  .arrow {
+    transform: scale(2) rotate(45deg);
+    -webkit-transform: scale(2) rotate(45deg);
+  }
+}
