@@ -10,6 +10,8 @@ const showImages = (n) => {
   for (let item of images) {
      item.style.display = "none";
   }
+  console.log(slideIndex);
+  console.log(images[slideIndex - 1]);
   images[slideIndex - 1].style.display = "block";
 }
 
@@ -27,8 +29,8 @@ const slideImages = () => {
     item.classList.remove("slidingImg");
     // item.style.right = "100%";
   }
-  console.log(images[slideIndex]);
-  images[slideIndex].style.right = "0";
+  // console.log(images[slideIndex]);
+  // images[slideIndex].style.right = "0";
   console.log(images[slideIndex - 1]);
   setTimeout(() => {
     images[slideIndex - 1].classList.add("slidingImg");

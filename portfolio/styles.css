@@ -329,6 +329,7 @@ section {
   color: #f0f0f0;
   max-width: 300px;
   width: 300px;
+  position: relative;
 }
 
 .work .work-item .work-item-hover-bg {
