@@ -43,8 +43,6 @@ nav a {
   -webkit-transition-property: background-position, color;
   transition-property: background-position, color;
   padding: 10px 0 10px 25%;
-  font-size: 1.1rem;
-  font-weight: bold;
 }
 
 nav a:hover {
@@ -333,11 +331,55 @@ section {
   width: 300px;
 }
 
+.work .work-item .work-item-hover-bg {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.work .work-item .work-item-link {
+  -webkit-transition: width 5s;
+  transition: width 5s;
+  display: none;
+  visibility: hidden;
+  width: 300px;
+  text-align: center;
+}
+
+.work .work-item .work-item-link button {
+  display: inline-block;
+  width: 200px;
+  height: 50px;
+  cursor: pointer;
+  background: white;
+  margin: 10px;
+}
+
 .work .work-item:hover {
   -webkit-box-shadow: 10px 10px 20px #251266;
           box-shadow: 10px 10px 20px #251266;
   -webkit-transform: scale(1.1);
           transform: scale(1.1);
+}
+
+.work .work-item:hover .work-item-hover-bg {
+  background: rgba(29, 29, 29, 0.8);
+}
+
+.work .work-item:hover .work-item-link {
+  display: block;
+  visibility: visible;
 }
 
 .work .work-item img {
@@ -660,6 +702,16 @@ a:link,
 a:visited {
   color: #f0f0f0;
   text-decoration: none;
+}
+
+nav a {
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+
+.work-item button {
+  font-size: 0.9rem;
+  font-weight: bold;
 }
 
 .experience-item p {
