@@ -46,7 +46,7 @@ img {
 
 .slidingImg {
   transition: 2s;
-  right: 0%;
+  right: 0% !important;
   z-index: 1;
 }
 
