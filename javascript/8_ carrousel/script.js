@@ -29,62 +29,21 @@ const moveStartupImgAway = () => {
 };
 
 const keepShowingFormerImgOnScreen = (n) => {
-  // if (slideDirection === "left" && slideNumber !== images.length) {
-  //   console.log("IMG BEFORE CURRENT IS POSITIONED INSIDE OF SCREEN");
-  //   images[slideNumber].style.right = "0";
-  //   return;
-  // }
-  // console.log("FIRST IMG IS POSITIONED INSIDE OF SCREEN");
-  // images[0].style.right = "0";
-
-  // if (slideDirection === "right" && slideNumber !== 1) {
-  //   console.log("IMG BEFORE CURRENT IS POSITIONED INSIDE OF SCREEN");
-  //   images[slideNumber - 2].style.right = "0";
-  //   return
-  // }
-  // console.log("LAST IMG IS POSITIONED INSIDE OF SCREEN");
-  // images[images.length - 1].style.right = "0";
-
-  // with numbers
-
   if (slideNumber === 1) {
     return images[slideNumber - n].style.right = "0";
   }
   if (slideNumber === images.length) {
-    return images[0].style.right = "0"
+    return images[slideNumber - n].style.right = "0"
   }
   images[slideNumber - n].style.right = "0";
 };
 
-const slideNewImgIntoScreen = (slideDirection) => {
-  if (slideDirection === "left") {
-    images[slideNumber - 1].style.right = "100%";
-    setTimeout(() => {
-      if (slideNumber === 1) {
-        console.log("LAST IMG SLIDES INTO SCREEN");
-        images[0].classList.add("slidingImg");
-        console.log(images[0]);
-      } else {
-        console.log("CURRENT IMG SLIDES INTO SCREEN");
-        images[slideNumber - 1].classList.add("slidingImg");
-        console.log(images[slideNumber - 1]);
-      }
-    });
-  }
-
-  if (slideDirection === "right") {
-    images[slideNumber - 1].style.right = "-100%";
-    setTimeout(() => {
-      if (slideNumber === 1) {
-        console.log("LAST IMG SLIDES INTO SCREEN");
-        images[0].classList.add("slidingImg");
-        console.log(images[0]);
-      } else {
-        console.log("CURRENT IMG SLIDES INTO SCREEN");
-        images[slideNumber - 1].classList.add("slidingImg");
-      }
-    });
-  }
+const slideNewImgIntoScreen = (n) => {
+  if (n === 0) {images[slideNumber - 1].style.right = "100%"}
+  if (n === 2) {images[slideNumber - 1].style.right = "-100%"}
+  setTimeout(() => {
+    images[slideNumber - 1].classList.add("slidingImg");
+  })
 };
 
 const removeFormerImgFromScreen = (slideDirection) => {
@@ -111,34 +70,47 @@ const removeFormerImgFromScreen = (slideDirection) => {
       }
     }, 2000);
   }
+
+  // with numbers
+  setTimeout(() => {
+    if (slideNumber === images.length) {return images[slideNumber - n].style.right = "0"}
+    if (slideNumber === 1) {return images[slideNumber - n].style.right = "0"}
+    images[slideNumber - n].style.right = "0";
+  }, 2000)
 };
 
-const slideImages = (slideDirection) => {
+passLeftArgument = () => {
+  if (slideNumber === images.length) {return 5}
+  if (slideNumber !== images.length) {return 0}
+}
+
+leftArrow.addEventListener("click", () => {
   moveStartupImgAway();
   for (let item of images) {
     console.log("ALL SLIDING IMG CLASSES ARE REMOVED");
     item.classList.remove("slidingImg");
   }
-  
-  slideNewImgIntoScreen(slideDirection);
-  removeFormerImgFromScreen(slideDirection);
-};
-
-leftArrow.addEventListener("click", () => {
   changeSlideNumber(-1);
-  keepShowingFormerImgOnScreen(0);
-  slideImages("left");
+  keepShowingFormerImgOnScreen(passLeftArgument());
+  slideNewImgIntoScreen(0);
+  removeFormerImgFromScreen("left");
 });
 
-const passArgument = () => {
+const passRightArgument = () => {
   if (slideNumber === 1) {return -3}
   if (slideNumber !== 1) {return 2}
 }
 
 rightArrow.addEventListener("click", () => {
+  moveStartupImgAway();
+  for (let item of images) {
+    console.log("ALL SLIDING IMG CLASSES ARE REMOVED");
+    item.classList.remove("slidingImg");
+  }
   changeSlideNumber(1);
-  keepShowingFormerImgOnScreen(passArgument());
-  slideImages("right");
+  keepShowingFormerImgOnScreen(passRightArgument());
+  slideNewImgIntoScreen(2);
+  removeFormerImgFromScreen("right");
 });
 
 showStartupImg();
