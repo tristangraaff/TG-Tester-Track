@@ -45,26 +45,10 @@ img {
 }
 
 .slidingImg {
-  transition: 2s;
+  transition: 1s;
   right: 0% !important;
   z-index: 1;
 }
-
-/* .img-2 {
-  left: 100%;
-}
-
-.img-3 {
-  left: 200%;
-}
-
-.img-4 {
-  left: -100%;
-}
-
-.img-5 {
-  left: -200%;
-} */
 
 .arrow {
   display: inline-block;

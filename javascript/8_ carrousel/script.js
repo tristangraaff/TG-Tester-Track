@@ -5,25 +5,28 @@ const images = document.querySelectorAll("img");
 let slideNumber = 1;
 
 const showStartupImg = () => {
-  console.log("FIRST IMAGE IS RENDERED WITHIN SCREEN ON STARTUP");
   images[0].style.right = "0";
 };
 
-const counter = (n) => {
+const counterFunction = (n) => {
   if (n < 1) {slideNumber = images.length}
   if (n > images.length) {slideNumber = 1}
   console.log(`SLIDENUMBER = ${slideNumber}`);
 };
 
+const removeSlidingImgClass = () => {
+  for (let item of images) {
+    item.classList.remove("slidingImg");
+  }
+}
+
 const changeSlideNumber = (n) => {
-  console.log("COUNTER FUNCTION IS RUN, SLIDENUMBER DIMINISHES OR INCREASES BY 1");
   slideNumber += n;
-  counter(slideNumber);
+  counterFunction(slideNumber);
 };
 
-const moveStartupImgAway = () => {
+const removeStartUpImgFromScreen = () => {
   if (images[0].style.right == "0px") {
-    console.log("STARTUP IMAGE IS POSITIONED OUTSIDE OF SCREEN");
     images[0].style.right = "100%";
   }
 };
@@ -46,54 +49,29 @@ const slideNewImgIntoScreen = (n) => {
   })
 };
 
-const removeFormerImgFromScreen = (slideDirection) => {
-  if (slideDirection === "left") {
-    setTimeout(() => {
-      if (slideNumber === images.length) {
-        console.log("FIRST IMG IS POSITIONED OUTSIDE OF SCREEN");
-        images[0].style.right = "100%";
-      } else {
-        console.log("IMG BEFORE CURRENT IS POSITIONED OUTSIDE OF SCREEN");
-        images[slideNumber].style.right = "100%";
-      }
-    }, 2000);
+const removeFormerImgFromScreen = (n) => setTimeout(() => {
+  if (slideNumber === 1) {
+    return images[slideNumber - n].style.right = "100%";
   }
-
-  if (slideDirection === "right") {
-    setTimeout(() => {
-      if (slideNumber === images.length) {
-        console.log("FIRST IMG IS POSITIONED OUTSIDE OF SCREEN");
-        images[slideNumber - 2].style.right = "-100%";
-      } else {
-        console.log("IMG BEFORE CURRENT IS POSITIONED OUTSIDE OF SCREEN");
-        images[slideNumber].style.right = "-100%";
-      }
-    }, 2000);
+  if (slideNumber === images.length) {
+    return images[slideNumber - n].style.right = "100%"
   }
+  console.log(n)
+  images[slideNumber - n].style.right = "100%";
+}, 2000)
 
-  // with numbers
-  setTimeout(() => {
-    if (slideNumber === images.length) {return images[slideNumber - n].style.right = "0"}
-    if (slideNumber === 1) {return images[slideNumber - n].style.right = "0"}
-    images[slideNumber - n].style.right = "0";
-  }, 2000)
-};
-
-passLeftArgument = () => {
+const passLeftArgument = () => {
   if (slideNumber === images.length) {return 5}
   if (slideNumber !== images.length) {return 0}
 }
 
 leftArrow.addEventListener("click", () => {
-  moveStartupImgAway();
-  for (let item of images) {
-    console.log("ALL SLIDING IMG CLASSES ARE REMOVED");
-    item.classList.remove("slidingImg");
-  }
+  removeStartUpImgFromScreen();
+  removeSlidingImgClass();
   changeSlideNumber(-1);
   keepShowingFormerImgOnScreen(passLeftArgument());
   slideNewImgIntoScreen(0);
-  removeFormerImgFromScreen("left");
+  removeFormerImgFromScreen(passLeftArgument());
 });
 
 const passRightArgument = () => {
@@ -102,15 +80,12 @@ const passRightArgument = () => {
 }
 
 rightArrow.addEventListener("click", () => {
-  moveStartupImgAway();
-  for (let item of images) {
-    console.log("ALL SLIDING IMG CLASSES ARE REMOVED");
-    item.classList.remove("slidingImg");
-  }
+  removeStartUpImgFromScreen();
+  removeSlidingImgClass();
   changeSlideNumber(1);
   keepShowingFormerImgOnScreen(passRightArgument());
   slideNewImgIntoScreen(2);
-  removeFormerImgFromScreen("right");
+  removeFormerImgFromScreen(passRightArgument());
 });
 
 showStartupImg();
