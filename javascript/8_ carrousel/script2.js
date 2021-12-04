@@ -37,3 +37,30 @@ carouselSlide.addEventListener("transitionend", () => {
     moveImages();
   }
 })
+
+//API INTEGRATION
+
+const APIButton = document.querySelector(".api-button");
+const APIImageElement = document.querySelector(".api-test");
+console.log(APIButton, APIImageElement)
+
+const getData = async function () {
+  try {
+    const randomPageNumber = Math.floor(Math.random() * 100)
+    const requestUrl = `https://api.unsplash.com/search/photos?query=russia&client_id=cTDUVlLPVV4SoCK_UjD5yimHJ4EEZ6TuwA-6HN7_k7M&page=${randomPageNumber}`;
+    const res = await fetch(requestUrl, {method: "GET"});
+    const convertedRes = await res.json();
+    console.log(convertedRes);
+    return convertedRes;
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+APIButton.addEventListener("click", async () => {
+  const randomImgNumber = Math.floor(Math.random() * 10);
+  const imagesData = await getData();
+  console.log(imagesData);
+  const randomImage = imagesData.results[randomImgNumber].urls.regular;
+  APIImageElement.src = randomImage;
+})
