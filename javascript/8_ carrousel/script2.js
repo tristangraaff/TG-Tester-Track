@@ -1,3 +1,8 @@
+'use strict'
+
+import getData from './api-client.js';
+
+//For carousel
 const carouselSlide = document.querySelector(".slide-container");
 const images = document.querySelectorAll(".slide-images");
 const prevBtn = document.querySelector(".arrowLeft");
@@ -42,24 +47,12 @@ carouselSlide.addEventListener("transitionend", () => {
   }
 });
 
-//API INTEGRATION
+//Inject API data into DOM
 
-const APIButton = document.querySelector(".api-button");
+const APIButton = document.querySelector(".apiButton");
 const nonClonedImages = document.querySelectorAll(".slide-images-non-clone");
 const lastImageClone = document.querySelector("#lastImageClone");
 const firstImageClone = document.querySelector("#firstImageClone");
-
-const getData = async function () {
-  try {
-    const randomPageNumber = Math.floor(Math.random() * 100);
-    const requestUrl = `https://api.unsplash.com/search/photos?query=russia&client_id=cTDUVlLPVV4SoCK_UjD5yimHJ4EEZ6TuwA-6HN7_k7M&page=${randomPageNumber}`;
-    const res = await fetch(requestUrl, { method: "GET" });
-    const convertedRes = await res.json();
-    return convertedRes;
-  } catch (error) {
-    console.log(error);
-  }
-};
 
 let randomNumbersArray = [];
 
@@ -81,8 +74,10 @@ APIButton.addEventListener("click", async () => {
   const imagesData = await getData();
   for (let i = 0; i < images.length - 2; i++) {
     nonClonedImages[i].src =
-      imagesData.results[randomNumbersArray[i]].urls.regular + "&w=700";
+      imagesData.results[randomNumbersArray[i]].urls.regular + "&w=1000&h=700";
   }
   lastImageClone.src = images[images.length - 2].src;
   firstImageClone.src = images[1].src;
 });
+
+
