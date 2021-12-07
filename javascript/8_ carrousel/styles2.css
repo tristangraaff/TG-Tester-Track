@@ -110,6 +110,7 @@ body {
   font-family: Georgia, 'Times New Roman', Times, serif;
   font-style: italic;
   font-size: 1.2rem;
+  cursor: pointer;
 }
 
 .api-button:hover,
@@ -139,14 +140,32 @@ body {
 .change-subject-container {
   width: 400px;
   margin: auto;
+  margin-bottom: 50px;
 }
 
 .change-subject-input {
   width: 300px;
   border: none;
+  background: rgb(253, 225, 132);
+  padding: 20px 0;
+  margin-top: 10px;
+  font-size: 1.2rem;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-style: italic;
+  padding-left: 20px;
 }
 
 .change-subject-btn {
   width: 96px;
   border: none;
+  background: rgb(253, 225, 132);
+  padding: 20px 0;
+  font-size: 1.2rem;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-style: italic;
+  cursor: pointer;
+}
+
+.change-subject-btn:hover {
+  background: red;
 }
