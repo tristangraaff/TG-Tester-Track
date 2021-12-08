@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<style>
+  * {
+    margin: 0;
+  }
+
+  body {
+    position: relative;
+  }
+  .container {
+    height: 400px;
+    width: 800px;
+    background: green;
+    margin: auto;
+  }
+
+  .modal {
+    position: absolute;
+    background: rgba(0, 0, 0, 0.5);
+    width: 100%;
+    height: 100vh;
+    top: 0;
+    display: none;
+  }
+
+  .modal-content {
+    height: 200px;
+    width: 400px;
+    background: red;
+    /* display: none; */
+    position: absolute;
+    top: 100px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 999;
+  }
+</style>
+<body>
+  <div class="container">
+    <button class="dog-btn">Dog</button>
+    <button class="cat-btn">Cat</button>
+    <button class="parrot-btn">Parrot</button>
+  </div>
+  <div class="modal"></div>
+</body>
+
+<script>
+  const dogBtn = document.querySelector(".dog-btn");
+  const catBtn = document.querySelector(".cat-btn");
+  const parrotBtn = document.querySelector(".parrot-btn");
+  const modal = document.querySelector(".modal");
+  
+  let modalContent = document.createElement("div");
+  
+  const loadModal = () => {
+    modal.appendChild(modalContent);
+    modalContent.classList.add("modal-content");
+    modal.style.display = "block";
+  }
+
+  dogBtn.addEventListener("click", () => {
+    loadModal();
+    modalContent.innerText = "Dit is een hond";
+    modalContent.style.fontSize = "3rem";
+  })
+
+  catBtn.addEventListener("click", () => {
+    loadModal();
+    modalContent.innerText = "Dit is een kat";
+    modalContent.style.fontSize = "3rem";
+  })
+
+  parrotBtn.addEventListener("click", () => {
+    loadModal();
+    modalContent.innerText = "Dit is een papegaai";
+    modalContent.style.fontSize = "3rem";
+  })
+
+  modal.addEventListener("click", (event) => {
+    console.log(event.target.classList.value)
+    if (event.target.classList.value === "modal-content") return;
+    // if (event.target.classList.value === "dog-btn") return;
+    // if (event.target.classList.value === "cat-btn") return;
+    // if (event.target.classList.value === "parrot-btn") return;
+    modal.style.display = "none";
+  })
+</script>
+</html>
