@@ -171,7 +171,7 @@ function OtherSquare(sideLength) {
 
 //Stopwatch exercise
 function Stopwatch() {
-  let counter = 0;
+  let counter, running = 0;
   const timer = () => setInterval(function() {
     counter += 0.01;
   }, 10);
