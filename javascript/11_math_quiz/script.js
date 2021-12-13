@@ -67,7 +67,7 @@ class Quiz {
       answerValue.innerText = answer;
       answerNumber.classList.add("answer-number");
       answerValue.classList.add("answer-value");
-      
+
       answerElement.appendChild(answerNumber);
       answerElement.appendChild(answerValue);
       answerElement.classList.add("answer");
@@ -87,6 +87,6 @@ class Question {
 
 answers1 = [1, 2, 3, 4, 67, 5];
 const questionAndAnswers1 = new Question(56 + 11, answers1);
-const quiz = new Quiz(questionAndAnswers1);
+const quiz = new Quiz(questionAndAnswers1); 
 
 
