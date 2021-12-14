@@ -130,7 +130,7 @@ class Quiz {
 }
 
 class Restart {
-  constructor() {
+  constructor(btnName, instanceToBeCreated) {
     this.appContainer = document.querySelector(".app-container");
     this.restartBtn = document.createElement("button");
     this.addRestartBtnToDOM();
@@ -197,4 +197,32 @@ const questions = [
   }
 ]
 
-new Start();
+// new Start();
+
+class Button {
+  constructor(btnName, instanceToBeCreated) {
+    this.btnName = btnName;
+    this.instanceToBeCreated = instanceToBeCreated;
+    console.log(this.instanceToBeCreated);
+    this.appContainer = document.querySelector(".app-container");
+    this.btn = document.createElement(btnName);
+    this.addBtnToDOM();
+  }
+
+  addBtnToDOM() {
+    this.btn.classList.add(this.btnName);
+    this.btn.setAttribute("type", "button");
+    this.btn.innerText = this.btnName;
+    this.appContainer.appendChild(this.btn);
+    this.runNewObjOnClick();
+  }
+
+  runNewObjOnClick() {
+    this.btn.addEventListener("click", () => {
+      this.btn.remove();
+      this.instanceToBeCreated;
+    });
+  }
+}
+
+const startQuiz = new Button("start", new Quiz(questions[0], 0))
