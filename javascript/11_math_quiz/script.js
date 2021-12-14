@@ -17,13 +17,13 @@ class Start {
   startQuiz() {
     this.startBtn.addEventListener("click", () => {
       this.startBtn.remove();
-      new Quiz(questions.question1, answers.answers1);
+      new Quiz(questions.question1, answers.answers1, 1);
     });
   }
 }
 
 class Quiz {
-  constructor(question, answers) {
+  constructor(question, answersParam, quizCounter) {
     this.appContainer = document.querySelector(".app-container");
     this.quizContainer = document.createElement("div");
     this.questionAnswerContainer = document.createElement("div");
@@ -32,11 +32,13 @@ class Quiz {
     this.startBtn = null;
     this.title = "Math Problem";
     this.question = question;
-    this.answers = answers;
+    this.answers = answersParam;
 
     this.nextBtn = document.createElement("button");
     this.prevBtn = document.createElement("button");
+    this.btnsContainer = document.createElement("div");
 
+    this.quizCounter = quizCounter;
     this.init();
   }
 
@@ -69,20 +71,40 @@ class Quiz {
   }
 
   addBtnsToDOM() {
-    const btnContainer = document.createElement("div");
     this.nextBtn.classList.add("next-btn");
     this.prevBtn.classList.add("prev-btn");
     this.nextBtn.innerText = "Next";
     this.prevBtn.innerText = "Prev";
-    btnContainer.appendChild(this.nextBtn);
-    btnContainer.appendChild(this.prevBtn);
-    this.appContainer.appendChild(btnContainer);
+    this.btnsContainer.appendChild(this.nextBtn);
+    this.btnsContainer.appendChild(this.prevBtn);
+    this.appContainer.appendChild(this.btnsContainer);
 
     this.nextBtn.addEventListener("click", () => {
-      new Quiz(questionAndAnswers2);
-    });
+      this.quizContainer.remove();
+      this.btnsContainer.remove();
+      
+      let quizNumberToBeOpenend = ++this.quizCounter;
+      let questionProp
+      let answersProp
 
-    this.nextBtn.addEventListener("click", () => {});
+      for (let prop in questions) {
+        const propCount = prop.charAt(prop.length-1);
+        if (quizNumberToBeOpenend == propCount) {
+          questionProp = prop;
+          console.log(questions.questionProp);
+          new Quiz(questions.questionProp, answers.answers2, quizNumberToBeOpenend);
+        }
+      }
+
+      // for (let prop in answers) {
+      //   const propCount = prop.charAt(prop.length-1);
+      //   if (quizNumberToBeOpenend == propCount) {
+      //     answersProp = prop;
+      //     console.log(answers.answersProp);
+      //     new Quiz(questions.question2, answers.answersProp, quizNumberToBeOpenend);
+      //   }
+      // }     
+    });
   }
 
   addQuestionToDOM() {
@@ -94,7 +116,7 @@ class Quiz {
     const answers = document.createElement("ul");
     answers.classList.add("answers");
     this.questionAnswerContainer.appendChild(answers);
-
+    console.log(this.answers)
     for (let answer of this.answers) {
       let counter = 1;
 
