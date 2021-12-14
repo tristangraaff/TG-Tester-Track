@@ -17,13 +17,13 @@ class Start {
   startQuiz() {
     this.startBtn.addEventListener("click", () => {
       this.startBtn.remove();
-      new Quiz(questions.question1, answers.answers1, 1);
+      new Quiz(questions[0], 0);
     });
   }
 }
 
 class Quiz {
-  constructor(question, answersParam, quizCounter) {
+  constructor(questionObj, quizCounter) {
     this.appContainer = document.querySelector(".app-container");
     this.quizContainer = document.createElement("div");
     this.questionAnswerContainer = document.createElement("div");
@@ -31,8 +31,11 @@ class Quiz {
     this.quizIsRunnig = false;
     this.startBtn = null;
     this.title = "Math Problem";
-    this.question = question;
-    this.answers = answersParam;
+
+    this.question = questionObj.question;
+    this.possibleAnswers = questionObj.possibleAnswers;
+    this.answerHasBeenSelected = questionObj.answerHasBeenSelected;
+    this.correctAnswer = questionObj.correctAnswer;
 
     this.nextBtn = document.createElement("button");
     this.prevBtn = document.createElement("button");
@@ -82,28 +85,17 @@ class Quiz {
     this.nextBtn.addEventListener("click", () => {
       this.quizContainer.remove();
       this.btnsContainer.remove();
-      
       let quizNumberToBeOpenend = ++this.quizCounter;
-      let questionProp
-      let answersProp
 
-      for (let prop in questions) {
-        const propCount = prop.charAt(prop.length-1);
-        if (quizNumberToBeOpenend == propCount) {
-          questionProp = prop;
-          console.log(questions.questionProp);
-          new Quiz(questions.questionProp, answers.answers2, quizNumberToBeOpenend);
+      for (let i = 0; i < questions.length; i++) {
+        if (quizNumberToBeOpenend === i) {
+          new Quiz(questions[i], quizNumberToBeOpenend)
         }
       }
 
-      // for (let prop in answers) {
-      //   const propCount = prop.charAt(prop.length-1);
-      //   if (quizNumberToBeOpenend == propCount) {
-      //     answersProp = prop;
-      //     console.log(answers.answersProp);
-      //     new Quiz(questions.question2, answers.answersProp, quizNumberToBeOpenend);
-      //   }
-      // }     
+      if (quizNumberToBeOpenend === questions.length) {
+        new Restart()
+      }
     });
   }
 
@@ -116,8 +108,7 @@ class Quiz {
     const answers = document.createElement("ul");
     answers.classList.add("answers");
     this.questionAnswerContainer.appendChild(answers);
-    console.log(this.answers)
-    for (let answer of this.answers) {
+    for (let answer of this.possibleAnswers) {
       let counter = 1;
 
       const answerElement = document.createElement("li");
@@ -139,24 +130,71 @@ class Quiz {
 }
 
 class Restart {
-  constructor() {}
+  constructor() {
+    this.appContainer = document.querySelector(".app-container");
+    this.restartBtn = document.createElement("button");
+    this.addRestartBtnToDOM();
+  }
+
+  addRestartBtnToDOM() {
+    this.restartBtn.classList.add("restart-button");
+    this.restartBtn.setAttribute("type", "button");
+    this.restartBtn.innerText = "RESTART";
+    this.appContainer.appendChild(this.restartBtn);
+    this.restartAppOnClick()
+  }
+
+  restartAppOnClick() {
+    this.restartBtn.addEventListener("click", () => {
+      this.restartBtn.remove();
+      new Start();
+    });
+  }
 }
 
-const questions = {
-  question1: "56 + 11",
-  question2: "70 - 14",
-  question3: "80 - 15",
-  question5: "10 + 15",
-  question6: "21  -16",
-};
-
-const answers = {
-  answers1: [1, 2, 3, 67, 5],
-  answers2: [2, 3, 4, 5, 6],
-  answers3: [3, 4, 5, 6, 7],
-  answers4: [4, 5, 6, 7, 8],
-  answers5: [5, 6, 7, 8, 9],
-  answers6: [6, 7, 8, 9, 10],
-};
+const questions = [
+  {
+    name: "question1",
+    question: "56 + 11", 
+    possibleAnswers: [1, 2, 3, 67, 5],
+    answerHasBeenSelected: false,
+    correctAnswer: 67 
+  },
+  {
+    name: "question2",
+    question: "1 + 2", 
+    possibleAnswers: [2, 3, 4, 5, 6],
+    answerHasBeenSelected: false,
+    correctAnswer: 67 
+  },
+  {
+    name: "question3",
+    question: "56 + 11111", 
+    possibleAnswers: [3, 4, 5, 6, 7],
+    answerHasBeenSelected: false,
+    correctAnswer: 67 
+  },
+  {
+    name: "question4",
+    question: "56000 + 11", 
+    possibleAnswers: [4, 5, 6, 7, 8],
+    answerHasBeenSelected: false,
+    correctAnswer: 67 
+  },
+  {
+    name: "question5",
+    question: "56xvc + 11", 
+    possibleAnswers: [5, 6, 7, 8, 9],
+    answerHasBeenSelected: false,
+    correctAnswer: 67 
+  },
+  {
+    name: "question6",
+    question: "aaa56 + 11", 
+    possibleAnswers: [7, 8, 9, 17, 12],
+    answerHasBeenSelected: false,
+    correctAnswer: 67 
+  }
+]
 
 new Start();
