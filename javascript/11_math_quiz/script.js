@@ -31,7 +31,7 @@ class Quiz {
     this.quizIsRunnig = false;
     this.startBtn = null;
     this.title = "Math Problem";
-
+  
     this.question = questionObj.question;
     this.possibleAnswers = questionObj.possibleAnswers;
     this.answerHasBeenSelected = questionObj.answerHasBeenSelected;
@@ -42,7 +42,7 @@ class Quiz {
     this.btnsContainer = document.createElement("div");
 
     this.quizCounter = quizCounter;
-    this.init();
+    // this.init();
   }
 
   init() {
@@ -89,12 +89,12 @@ class Quiz {
 
       for (let i = 0; i < questions.length; i++) {
         if (quizNumberToBeOpenend === i) {
-          new Quiz(questions[i], quizNumberToBeOpenend)
+          new Quiz(questions[i], quizNumberToBeOpenend).init();
         }
       }
 
       if (quizNumberToBeOpenend === questions.length) {
-        new Restart()
+        new Button("restart", new Button("start", new Quiz(questions[0], 0))).init();
       }
     });
   }
@@ -206,6 +206,9 @@ class Button {
     console.log(this.instanceToBeCreated);
     this.appContainer = document.querySelector(".app-container");
     this.btn = document.createElement(btnName);
+  }
+
+  init() {
     this.addBtnToDOM();
   }
 
@@ -220,9 +223,14 @@ class Button {
   runNewObjOnClick() {
     this.btn.addEventListener("click", () => {
       this.btn.remove();
-      this.instanceToBeCreated;
+      this.instanceToBeCreated.init();
     });
   }
 }
 
-const startQuiz = new Button("start", new Quiz(questions[0], 0))
+// function createClassInstance(questionObj, quizCounter) {
+//   const obj = new Quiz(questionObj, quizCounter);
+// }
+
+const startQuiz = new Button("start", new Quiz(questions[0], 0)).init();
+console.log(createClassInstance)
