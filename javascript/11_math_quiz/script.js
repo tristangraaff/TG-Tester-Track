@@ -1,5 +1,5 @@
 class Quiz {
-  constructor(questionObj, quizCounter) {
+  constructor(questionObj, quizCounter, prevAnswers) {
     this.appContainer = document.querySelector(".app-container");
     this.quizContainer = document.createElement("div");
     this.quizContainer.classList.add("quiz-container");
@@ -7,7 +7,6 @@ class Quiz {
     this.questionAnswerContainer.classList.add("question-answers-container");
     this.answersList = document.createElement("ul");
 
-    this.title = "Math Problem";
     this.quizCounter = quizCounter;
     this.question = questionObj.question;
     this.possibleAnswers = questionObj.possibleAnswers;
@@ -20,10 +19,11 @@ class Quiz {
   }
 
   init() {  
-    this.addQuizContentToDOM();
-    this.addBtnsToDOM();
-    this.addQuestionAndAnswersToDOM();
-    this.getQuizQuestionOnClick();
+    this.addQuizContentToAppContainer();
+    this.addBtnsToAppContainer();
+    this.getNextQuizQuestionOnClick();
+    this.getPrevQuizQuestionOnClick();
+    this.selectAnswer();
   }
 
   addTitleToQuizContainer() {
@@ -47,11 +47,6 @@ class Quiz {
     this.questionAnswerContainer.appendChild(questionElement);
   }
 
-  addAnswersListToQaContainer() {
-    this.answersList.classList.add("answers");
-    this.questionAnswerContainer.appendChild(this.answersList);
-  }
-
   addAnswersToList() {
     for (let answer of this.possibleAnswers) {
       const answerElement = document.createElement("li");
@@ -73,20 +68,22 @@ class Quiz {
     }
   }
 
-  addQuestionAndAnswersToDOM() {
+  addAnswersListToQaContainer() {
+    this.answersList.classList.add("answers");
+    this.questionAnswerContainer.appendChild(this.answersList);
+  }
+
+  addQuizContentToAppContainer() {
+    this.addTitleToQuizContainer();
+    this.addPageCounterToQuizContainer();
     this.addQuestionToQaContainer();
     this.addAnswersToList();
     this.addAnswersListToQaContainer();
-  }
-
-  addQuizContentToDOM() {
-    this.addTitleToQuizContainer();
-    this.addPageCounterToQuizContainer();
     this.quizContainer.appendChild(this.questionAnswerContainer);
     this.appContainer.appendChild(this.quizContainer);    
   }
 
-  addBtnsToDOM() {
+  addBtnsToAppContainer() {
     this.nextBtn.classList.add("next-btn");
     this.prevBtn.classList.add("prev-btn");
     this.nextBtn.innerText = "Next";
@@ -96,138 +93,82 @@ class Quiz {
     this.appContainer.appendChild(this.btnsContainer);
   }
 
-  navigateToNewQuizQuestion(quizCounterChange, quizCondition, statement) {
-    this.quizContainer.remove();
-    this.btnsContainer.remove();
-    let quizNumberToBeOpenend = quizCounterChange;
-    console.log(quizCounterChange)
-    for (let i = 0; i < questions.length; i++) {
-      if (quizNumberToBeOpenend === i) {
-        console.log("YO")
-        new Quiz(questions[i], quizNumberToBeOpenend).init();
-      }
-    }
-
-    if (quizNumberToBeOpenend === quizCondition) {
-      statement();
-    }
-  }
-
-  getQuizQuestionOnClick() {
-    const prevQuizCounterChange = --this.quizCounter;
-    const nextQuizCounterChange = ++this.quizCounter;
-    const prevQuizCondition = -1;
-    const nextQuizCondition = questions.length;
-    const prevStatement = () => { throw Error("Can't move past the first question.") };
-    const nextStatement = () => new Button("restart", new Button("start", new Quiz(questions[0], 0))).init();
-
-    this.prevBtn.addEventListener("click", () => {
-      this.navigateToNewQuizQuestion(prevQuizCounterChange, prevQuizCondition, prevStatement);
-    })
-
+  getNextQuizQuestionOnClick() {
     this.nextBtn.addEventListener("click", () => {
-      console.log(nextQuizCounterChange);
-      console.log(nextQuizCondition);
-      console.log(nextStatement);
-      this.navigateToNewQuizQuestion(nextQuizCounterChange, nextQuizCondition, nextStatement);
-    })
+      this.quizContainer.remove();
+      this.btnsContainer.remove();
+      let quizNumberToBeOpenend = ++this.quizCounter;
+
+      for (let i = 0; i < questions.length; i++) {
+        if (quizNumberToBeOpenend === i) {
+          new Quiz(questions[i], quizNumberToBeOpenend).init();
+        }
+      }
+
+      if (quizNumberToBeOpenend === questions.length) {
+        new Button(
+          "restart",
+          new Button("start", new Quiz(questions[0], 0))
+        ).init();
+      }
+    });
   }
 
-  // getNextQuizQuestionOnClick() {
-  //   this.nextBtn.addEventListener("click", () => {
-  //     this.quizContainer.remove();
-  //     this.btnsContainer.remove();
-  //     let quizNumberToBeOpenend = ++this.quizCounter;
+  getPrevQuizQuestionOnClick() {
+    this.prevBtn.addEventListener("click", () => {
+      if (this.quizCounter === 0) {
+        alert(new Error("Can't move past the first question."));
+        throw Error("Can't move past the first question.");
+      }
 
-  //     for (let i = 0; i < questions.length; i++) {
-  //       if (quizNumberToBeOpenend === i) {
-  //         new Quiz(questions[i], quizNumberToBeOpenend).init();
-  //       }
-  //     }
+      this.quizContainer.remove();
+      this.btnsContainer.remove();
 
-  //     if (quizNumberToBeOpenend === questions.length) {
-  //       new Button(
-  //         "restart",
-  //         new Button("start", new Quiz(questions[0], 0))
-  //       ).init();
-  //     }
-  //   });
-  // }
+      let quizNumberToBeOpenend = --this.quizCounter;
+      for (let i = 0; i < questions.length; i++) {
+        if (quizNumberToBeOpenend === i) {
+          new Quiz(questions[i], quizNumberToBeOpenend).init();
+        }
+      }
+    });
+  }
 
-  // getPrevQuizQuestionOnClick() {
-  //   this.prevBtn.addEventListener("click", () => {
-  //     this.quizContainer.remove();
-  //     this.btnsContainer.remove();
-  //     let quizNumberToBeOpenend = --this.quizCounter;
+  colorCorrectAnswerGreen() {
+    const answerValues = document.querySelectorAll(".answer-value");
+    for (let answerValue of answerValues) {
+        if (answerValue.innerText === this.correctAnswer.toString()) {
+          answerValue.style.background = "green";
+        }
+    }
+  }
 
-  //     for (let i = 0; i < questions.length; i++) {
-  //       if (quizNumberToBeOpenend === i) {
-  //         new Quiz(questions[i], quizNumberToBeOpenend).init();
-  //       }
-  //     }
+  colorWrongAnswerRed(element) {
+    if (element.innerText !== this.correctAnswer.toString()) {
+      element.style.background = "red";
+    }
+  }
 
-  //     if (quizNumberToBeOpenend === -1) {
-  //       throw Error("Can't move past the first question.");
-  //     }
-  //   });
-  // }
+  selectAnswer() {
+    window.addEventListener("click", (event) => {
+      if (event.target.classList[0] === "answer-value") {
+        this.colorCorrectAnswerGreen();
+        this.colorWrongAnswerRed(event.target)
+      }
+    })
+  }
 }
-
-const questions = [
-  {
-    name: "question1",
-    question: "56 + 11",
-    possibleAnswers: [1, 2, 3, 67, 5],
-    answerHasBeenSelected: false,
-    correctAnswer: 67,
-  },
-  {
-    name: "question2",
-    question: "1 + 2",
-    possibleAnswers: [2, 3, 4, 5, 6],
-    answerHasBeenSelected: false,
-    correctAnswer: 67,
-  },
-  {
-    name: "question3",
-    question: "56 + 11111",
-    possibleAnswers: [3, 4, 5, 6, 7],
-    answerHasBeenSelected: false,
-    correctAnswer: 67,
-  },
-  {
-    name: "question4",
-    question: "56000 + 11",
-    possibleAnswers: [4, 5, 6, 7, 8],
-    answerHasBeenSelected: false,
-    correctAnswer: 67,
-  },
-  {
-    name: "question5",
-    question: "56xvc + 11",
-    possibleAnswers: [5, 6, 7, 8, 9],
-    answerHasBeenSelected: false,
-    correctAnswer: 67,
-  },
-  {
-    name: "question6",
-    question: "aaa56 + 11",
-    possibleAnswers: [7, 8, 9, 17, 12],
-    answerHasBeenSelected: false,
-    correctAnswer: 67,
-  },
-];
 
 class Button {
   constructor(btnName, instanceToBeCreated) {
+    this.appContainer = document.querySelector(".app-container");  
     this.btnName = btnName;
-    this.instanceToBeCreated = instanceToBeCreated;
-    this.appContainer = document.querySelector(".app-container");
     this.btn = document.createElement(btnName);
+    this.instanceToBeCreated = instanceToBeCreated;
   }
 
   init() {
     this.addBtnToDOM();
+    this.runNewInstanceOnClick();
   }
 
   addBtnToDOM() {
@@ -235,15 +176,38 @@ class Button {
     this.btn.setAttribute("type", "button");
     this.btn.innerText = this.btnName;
     this.appContainer.appendChild(this.btn);
-    this.runNewObjOnClick();
   }
 
-  runNewObjOnClick() {
+  runNewInstanceOnClick() {
     this.btn.addEventListener("click", () => {
       this.btn.remove();
       this.instanceToBeCreated.init();
     });
   }
 }
+
+class Question {
+  constructor(question, possibleAnswers, answerHasBeenSelected, correctAnswer) {
+    this.question = question;
+    this.possibleAnswers = possibleAnswers;
+    this.answerHasBeenSelected = answerHasBeenSelected;
+    this.correctAnswer = correctAnswer;
+  }
+}
+
+class GivenAnswers {
+  constructor() {
+    
+  }
+}
+
+const question0 = new Question("56 + 11", [1, 2, 3, 67, 5], false, 67);
+const question1 = new Question("56 + 11", [2, 3, 4, 5, 6], false, 67);
+const question2 = new Question("56 + 11", [3, 4, 5, 6, 7], false, 67);
+const question3 = new Question("56 + 11", [4, 5, 6, 7, 8], false, 67);
+const question4 = new Question("56 + 11", [5, 6, 7, 8, 9], false, 67);
+const question5 = new Question("56 + 11", [7, 8, 9, 17, 12], false, 67);
+
+const questions = [question0, question1, question2, question3, question4, question5];
 
 const startQuiz = new Button("start", new Quiz(questions[0], 0)).init();
