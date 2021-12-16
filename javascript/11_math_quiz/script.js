@@ -14,8 +14,8 @@ class Quiz {
     this.prevBtn = document.createElement("button");
     this.btnsContainer = document.createElement("div");
 
-    this.chosenAnswers = [];
-    console.log(this.quizCounter);
+    this.answerHasBeenSelected = [false, false, false, false, false, false];
+    this.givenAnswers = [null, null, null, null, null, null];
   }
 
   init() {
@@ -35,8 +35,8 @@ class Quiz {
 
   addPageCounterToQuizContainer() {
     const counter = document.createElement("p");
-    counter.innerText = "Coming soon...";
-    counter.classList.add("quiz-counter");
+    counter.innerText = (this.quizCounter + 1) + " / 6";
+    counter.classList.add("page-counter");
     this.quizContainer.appendChild(counter);
   }
 
@@ -101,15 +101,21 @@ class Quiz {
         if (quizNumberToBeOpenend === i) {
           this.questionAnswerContainer.innerHTML = "";
           this.answersList.innerHTML = "";
+          document.querySelector(".page-counter").remove();
 
+          this.addPageCounterToQuizContainer(this.quizCounter);
           this.addQuestionToQaContainer(this.questionArray[i]);
           this.addAnswersToList(this.questionArray[i]);
           this.addAnswersListToQaContainer();
-          this.selectAnswer(this.questionArray[i])
+          this.selectAnswer(this.questionArray[i]);
         }
       }
 
       if (quizNumberToBeOpenend === questions.length) {
+        if (this.givenAnswers.includes(null)) {
+          alert(new Error("You haven't answered all questions yet. Please return."));
+          throw Error("You haven't answered all questions yet. Please return.");
+        }
         this.quizContainer.remove();
         this.btnsContainer.remove();
         new Button("restart", new Button("start", new Quiz(questions, 0))).init();
@@ -129,7 +135,9 @@ class Quiz {
         if (quizNumberToBeOpenend === i) {
           this.questionAnswerContainer.innerHTML = "";
           this.answersList.innerHTML = "";
+          document.querySelector(".page-counter").remove();
 
+          this.addPageCounterToQuizContainer(this.quizCounter);
           this.addQuestionToQaContainer(this.questionArray[i]);
           this.addAnswersToList(this.questionArray[i]);
           this.addAnswersListToQaContainer();
@@ -154,18 +162,31 @@ class Quiz {
     }
   }
 
+  colorPrevAnswers(questionObj) {
+    if (this.answerHasBeenSelected[this.quizCounter] === true) {
+      const answerValues = document.querySelectorAll(".answer-value");
+      for (let answerValue of answerValues) {
+        console.log(answerValue);
+        console.log(this.givenAnswers[this.quizCounter]);
+        if (answerValue.innerText === this.givenAnswers[this.quizCounter]) {
+          this.colorCorrectAnswerGreen(questionObj);
+          this.colorWrongAnswerRed(answerValue, questionObj);
+        }
+      }
+    };
+  }
+
   selectAnswer(questionObj) {
+    this.colorPrevAnswers(questionObj);
     window.addEventListener("click", (event) => {
       if (event.target.classList[0] === "answer-value") {
-        console.log(questionObj);
-        if (questionObj.answerHasBeenSelected === false) {
-          console.log(this.quizCounter);
-          this.chosenAnswers.push(event.target.innerText);
-          questionObj.answerHasBeenSelected = true;
+        if (this.answerHasBeenSelected[this.quizCounter] === false) {
+          this.givenAnswers[this.quizCounter] = event.target.innerText;
+          this.answerHasBeenSelected[this.quizCounter] = true;
           this.colorCorrectAnswerGreen(questionObj);
           this.colorWrongAnswerRed(event.target, questionObj);
+          console.log(this.givenAnswers);
         }
-        window.removeEventListener("click", () => {});
       }
     });
   }
@@ -210,11 +231,11 @@ class Question {
 
 
 const question0 = new Question("56 + 11", [1, 2, 3, 67, 5], false, 67);
-const question1 = new Question("56 + 11", [2, 3, 4, 67, 6], false, 6);
-const question2 = new Question("56 + 11", [3, 4, 5, 6, 7], false, 67);
-const question3 = new Question("56 + 11", [4, 5, 6, 7, 8], false, 67);
-const question4 = new Question("56 + 11", [5, 6, 7, 8, 9], false, 67);
-const question5 = new Question("56 + 11", [7, 8, 9, 17, 12], false, 67);
+const question1 = new Question("49 - 32", [2, 17, 4, 5, 6], false, 17);
+const question2 = new Question("70 - 14", [3, 4, 5, 6, 56], false, 56);
+const question3 = new Question("20 + 10", [30, 5, 6, 7, 8], false, 30);
+const question4 = new Question("16 - 16", [5, 6, 7, 8, 0], false, 0);
+const question5 = new Question("100 - 88", [7, 8, 9, 10, 12], false, 12);
 
 const questions = [
   question0,
