@@ -16,6 +16,7 @@ class Quiz {
 
     this.answerHasBeenSelected = [false, false, false, false, false, false];
     this.givenAnswers = [null, null, null, null, null, null];
+    this.correctAnswers = [];
   }
 
   init() {
@@ -89,8 +90,8 @@ class Quiz {
     this.prevBtn.classList.add("prev-btn");
     this.nextBtn.innerText = "Next";
     this.prevBtn.innerText = "Prev";
-    this.btnsContainer.appendChild(this.nextBtn);
     this.btnsContainer.appendChild(this.prevBtn);
+    this.btnsContainer.appendChild(this.nextBtn);
     this.appContainer.appendChild(this.btnsContainer);
   }
 
@@ -118,7 +119,8 @@ class Quiz {
         }
         this.quizContainer.remove();
         this.btnsContainer.remove();
-        new Button("restart", new Button("start", new Quiz(questions, 0))).init();
+        const finish = true;
+        new Button("restart", new Button("start", new Quiz(questions, 0)), finish).init();
       }
     });
   }
@@ -166,8 +168,6 @@ class Quiz {
     if (this.answerHasBeenSelected[this.quizCounter] === true) {
       const answerValues = document.querySelectorAll(".answer-value");
       for (let answerValue of answerValues) {
-        console.log(answerValue);
-        console.log(this.givenAnswers[this.quizCounter]);
         if (answerValue.innerText === this.givenAnswers[this.quizCounter]) {
           this.colorCorrectAnswerGreen(questionObj);
           this.colorWrongAnswerRed(answerValue, questionObj);
@@ -176,13 +176,19 @@ class Quiz {
     };
   }
 
+  saveCorrectAnswer() {
+
+  }
+
   selectAnswer(questionObj) {
     this.colorPrevAnswers(questionObj);
     window.addEventListener("click", (event) => {
       if (event.target.classList[0] === "answer-value") {
         if (this.answerHasBeenSelected[this.quizCounter] === false) {
           this.givenAnswers[this.quizCounter] = event.target.innerText;
+          console.log(this.g)
           this.answerHasBeenSelected[this.quizCounter] = true;
+
           this.colorCorrectAnswerGreen(questionObj);
           this.colorWrongAnswerRed(event.target, questionObj);
           console.log(this.givenAnswers);
@@ -193,23 +199,34 @@ class Quiz {
 }
 
 class Button {
-  constructor(btnName, instanceToBeCreated) {
+  constructor(btnName, instanceToBeCreated, finishCondition) {
     this.appContainer = document.querySelector(".app-container");
     this.btnName = btnName;
     this.btn = document.createElement(btnName);
     this.instanceToBeCreated = instanceToBeCreated;
+    this.finish = finishCondition;
   }
 
   init() {
+    this.addFinishTextToDOM();
     this.addBtnToDOM();
     this.runNewInstanceOnClick();
   }
 
   addBtnToDOM() {
+    this.appContainer.innerHTML = "";
     this.btn.classList.add(this.btnName);
     this.btn.setAttribute("type", "button");
     this.btn.innerText = this.btnName;
     this.appContainer.appendChild(this.btn);
+  }
+
+  addFinishTextToDOM() {
+    if (this.finish === true) {
+      const finishText = document.createElement("p");
+      finishText.innerHTML = "Congrats! One out of six answers are correct!"
+      this.appContainer.appendChild(finishText);
+    }
   }
 
   runNewInstanceOnClick() {
@@ -247,3 +264,5 @@ const questions = [
 ];
 
 const startQuiz = new Button("start", new Quiz(questions, 0)).init();
+
+console.log(new Quiz);
