@@ -1012,14 +1012,12 @@
 </body>
 <script>
   //PART 1
-
   const rawData = document.querySelector("p").innerText;
   splittedData = rawData.split(" ");
   let dataInObjects = [];
 
   let depth = 0;
   let horizontalPosition = 0;
-  let aim = 0;
 
   for (let i = 1; i < splittedData.length; i += 2) {
     const convertValueToNumber = Number(splittedData[i]);
@@ -1031,17 +1029,29 @@
     )
   }
 
-  // function MovementPolicy(typeOfMovement) {
-  //   console.log(typeOfMovement.command)
-  //   const Movements = {
-  //     forward: () => horizontalPosition += command.value,
-  //     down: () => depth += command.value,
-  //     up: () => depth -= command.value
-  //   }
-  //   return (Movements[typeOfMovement])
-  // }
+  for (let command of dataInObjects) {
+    if (command.command === 'forward') {
+      horizontalPosition += command.value
+    }
+    if (command.command === 'down') {
+      depth += command.value
+    }
+    if (command.command === 'up') {
+      depth -= command.value
+    }
+  }
 
-  const commands = [
+  console.log(horizontalPosition);
+  console.log(depth);
+  const multiplied = horizontalPosition * depth;
+  console.log(multiplied);
+
+  //PART2
+  let horizontalPosition2 = 0;
+  let depth2 = 0
+  let aim2 = 0;
+
+  const testData = [
     {
       command: 'forward',
       value: 5
@@ -1067,29 +1077,23 @@
       value: 2
     },
   ]
-
-  for (let command of commands) {
+  
+  for (let command of dataInObjects) {
     if (command.command === 'forward') {
-      horizontalPosition += command.value
-      depth += aim * command.value
+      horizontalPosition2 += command.value
+      depth2 += aim2 * command.value
     }
     if (command.command === 'down') {
-      depth += command.value
-      aim += command.value
+      aim2 += command.value
     }
     if (command.command === 'up') {
-      depth -= command.value
-      aim -=command.value
+      aim2 -= command.value
     }
-    console.log(aim, horizontalPosition, depth)
-    // MovementPolicy(command.command)
   }
 
-  console.log(horizontalPosition);
-  console.log(depth);
-  const multiplied = horizontalPosition * depth;
-  console.log(multiplied);
-
-  //PART2
+  console.log(horizontalPosition2);
+  console.log(depth2);
+  const multiplied2 = horizontalPosition2 * depth2;
+  console.log(multiplied2);
 </script>
 </html>

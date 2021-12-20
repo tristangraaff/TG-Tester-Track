@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+<script>
+  const binaryExampleData = [
+    '00100',
+    '11110',
+    '10110',
+    '10111',
+    '10101',
+    '01111',
+    '00111',
+    '11100',
+    '10000',
+    '11001',
+    '00010',
+    '01010',
+  ]
+
+  let dataInStringArrays = [];
+
+  for (let binaryNumber of binaryExampleData) {
+    const stringArray = binaryNumber.split('');
+    dataInStringArrays.push(stringArray);
+    // let zeroCounter = 0;
+    // let oneCounter = 0;
+    // for (let character of stringArray) {
+    //   // if (character === '0') {
+    //   //   zeroCounter++;
+    //   // }
+    //   // if (character === '1') {
+    //   //   oneCounter++
+    //   // }
+    // }
+  }
+  let zeroCounter = 0;
+  let oneCounter = 0;
+
+  for (let array of dataInStringArrays) {
+    if (array[0] === "0") {
+      zeroCounter++;
+    }
+    if (array[0] === "1") {
+      oneCounter++;
+    }
+  }
+  console.log(zeroCounter);
+  console.log(oneCounter);
+
+</script>
+</body>
+</html>
