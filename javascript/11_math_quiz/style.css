@@ -12,7 +12,14 @@ body {
   align-items: center;
 }
 
+.finish-text {
+  text-align: center;
+  width: 600px;
+  background: rgb(70, 135, 146);
+}
+
 .start,
+.restart,
 .next-btn,
 .prev-btn {
   text-align: center;
