@@ -153,6 +153,8 @@ class Quiz {
     const answerValues = document.querySelectorAll(".answer-value");
     for (let answerValue of answerValues) {
       if (answerValue.innerText === questionObj.correctAnswer.toString()) {
+        console.log(answerValue.innerText);
+        console.log(questionObj.correctAnswer.toString());
         answerValue.style.background = "green";
       }
     }
@@ -182,19 +184,23 @@ class Quiz {
 
   selectAnswer(questionObj) {
     this.colorPrevAnswers(questionObj);
-    window.addEventListener("click", (event) => {
+    const handleListener = () => {
+      listenerFunction(event);
+    }
+    const listenerFunction = event => {
       if (event.target.classList[0] === "answer-value") {
         if (this.answerHasBeenSelected[this.quizCounter] === false) {
           this.givenAnswers[this.quizCounter] = event.target.innerText;
-          console.log(this.g)
           this.answerHasBeenSelected[this.quizCounter] = true;
-
           this.colorCorrectAnswerGreen(questionObj);
-          this.colorWrongAnswerRed(event.target, questionObj);
-          console.log(this.givenAnswers);
+          this.colorWrongAnswerRed(event.target, questionObj);     
+          
+          window.removeEventListener("click", handleListener);
+          return; 
         }
       }
-    });
+    }
+    window.addEventListener("click", handleListener); 
   }
 }
 
@@ -246,9 +252,8 @@ class Question {
   }
 }
 
-
 const question0 = new Question("56 + 11", [1, 2, 3, 67, 5], false, 67);
-const question1 = new Question("49 - 32", [2, 17, 4, 5, 6], false, 17);
+const question1 = new Question("49 - 32", [2, 17, 4, 67, 6], false, 17);
 const question2 = new Question("70 - 14", [3, 4, 5, 6, 56], false, 56);
 const question3 = new Question("20 + 10", [30, 5, 6, 7, 8], false, 30);
 const question4 = new Question("16 - 16", [5, 6, 7, 8, 0], false, 0);
@@ -264,5 +269,3 @@ const questions = [
 ];
 
 const startQuiz = new Button("start", new Quiz(questions, 0)).init();
-
-console.log(new Quiz);
