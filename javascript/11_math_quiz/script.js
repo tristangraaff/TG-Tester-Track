@@ -187,26 +187,20 @@ class Quiz {
 
   selectAnswer(questionObj) {
     this.coloralreadyAnsweredAnswer(questionObj);
-    const listenerFunction = (event) => {
-      if (event.target.classList[0] === "answer-value") {
+    const answerValues = document.querySelectorAll(".answer-value");
+    for (let answer of answerValues) {
+      answer.addEventListener("click", () => {
         if (this.answerHasBeenSelected[this.quizCounter] === false) {
-          this.givenAnswers[this.quizCounter] = event.target.innerText;
-  
+          this.givenAnswers[this.quizCounter] = answer.innerText;
+          this.answerHasBeenSelected[this.quizCounter] = true;
+          this.colorCorrectAnswerGreen(questionObj);
+          this.colorWrongAnswerRed(answer, questionObj);    
           if (this.givenAnswers[this.quizCounter] === questionObj.correctAnswer.toString()) {
             this.correctAnswerNumber++;
           }
-  
-          this.answerHasBeenSelected[this.quizCounter] = true;
-          this.colorCorrectAnswerGreen(questionObj);
-          this.colorWrongAnswerRed(event.target, questionObj);     
-          
-          window.removeEventListener("click", handleListener);
-          return; 
         }
-      }
+      })
     }
-    const handleListener = () => listenerFunction(event); 
-    window.addEventListener("click", handleListener);
   }
 }
 
