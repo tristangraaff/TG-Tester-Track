@@ -1,3 +1,6 @@
+import questions from "./Question.js";
+import Button from "./Button.js";
+
 class Quiz {
   constructor(questionArray, quizCounter, prevAnswers) {
     this.appContainer = document.querySelector(".app-container");
@@ -203,68 +206,5 @@ class Quiz {
     }
   }
 }
-
-class Button {
-  constructor(btnName, instanceToBeCreated, correctAnswerNumber) {
-    this.appContainer = document.querySelector(".app-container");
-    this.btnName = btnName;
-    this.btn = document.createElement(btnName);
-    this.instanceToBeCreated = instanceToBeCreated;
-    this.correctAnswerNumber = correctAnswerNumber;
-    console.log(this.correctAnswerNumber)
-  }
-
-  init() {
-    this.appContainer.innerHTML = "";
-    this.addFinishTextToDOM();
-    this.addBtnToDOM();
-    this.runNewInstanceOnClick();
-  }
-
-  addBtnToDOM() {
-    this.btn.classList.add(this.btnName);
-    this.btn.setAttribute("type", "button");
-    this.btn.innerText = this.btnName;
-    this.appContainer.appendChild(this.btn);
-  }
-
-  addFinishTextToDOM() {
-    if (this.btnName === "restart") {
-      const finishText = document.createElement("p");
-      finishText.classList.add("finish-text");
-      if (this.correctAnswerNumber >= 4) {
-        finishText.innerHTML = `Congrats! ${this.correctAnswerNumber} out of 6 answers are correct!`
-      } else {
-        finishText.innerHTML = `Too bad.. ${this.correctAnswerNumber} out of 6 answers are correct. Better luck next time.`
-      }
-      this.appContainer.appendChild(finishText);
-    }
-  }
-
-  runNewInstanceOnClick() {
-    this.btn.addEventListener("click", () => {
-      this.btn.remove();
-      this.instanceToBeCreated.init();
-    });
-  }
-}
-
-class Question {
-  constructor(question, possibleAnswers, answerHasBeenSelected, correctAnswer) {
-    this.question = question;
-    this.possibleAnswers = possibleAnswers;
-    this.answerHasBeenSelected = answerHasBeenSelected;
-    this.correctAnswer = correctAnswer;
-  }
-}
-
-const questions = [
-  new Question("56 + 11", [1, 2, 3, 67, 5], false, 67),
-  new Question("49 - 32", [2, 17, 4, 67, 6], false, 17),
-  new Question("70 - 14", [3, 4, 5, 6, 56], false, 56),
-  new Question("20 + 10", [30, 5, 6, 7, 8], false, 30),
-  new Question("16 - 16", [5, 6, 7, 8, 0], false, 0),
-  new Question("100 - 88", [7, 8, 9, 10, 12], false, 12),
-];
 
 const startQuiz = new Button("start", new Quiz(questions, 0)).init();
