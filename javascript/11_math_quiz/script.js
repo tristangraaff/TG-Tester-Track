@@ -95,56 +95,66 @@ class Quiz {
     this.appContainer.appendChild(this.btnsContainer);
   }
 
+  performActionOnLastNextClick() {
+    if (this.quizCounter + 1 >= questions.length) {
+      if (this.givenAnswers.includes(null)) {
+        alert(new Error("You haven't answered all questions yet. Please return."));
+        throw Error("You haven't answered all questions yet. Please return.");
+      }
+      this.quizContainer.remove();
+      this.btnsContainer.remove();
+      new Button("restart", new Button("start", new Quiz(questions, 0)), this.correctAnswerNumber).init();
+    }
+  }
+
+  addNewQuizQuestionToDOM(index) {
+    this.questionAnswerContainer.innerHTML = "";
+    this.answersList.innerHTML = "";
+    document.querySelector(".page-counter").remove();
+
+    this.addPageCounterToQuizContainer(this.quizCounter);
+    this.addQuestionToQaContainer(this.questionArray[index]);
+    this.addAnswersToList(this.questionArray[index]);
+    this.addAnswersListToQaContainer();
+    this.selectAnswer(this.questionArray[index]);   
+  }
+
+  performActionOnRegularNextClick() {
+    let quizNumberToBeOpenend = ++this.quizCounter;
+    for (let i = 0; i < questions.length; i++) {
+      if (quizNumberToBeOpenend === i) {
+        this.addNewQuizQuestionToDOM(i);
+      }
+    }
+  }
+
   getNextQuizQuestionOnClick() {
     this.nextBtn.addEventListener("click", () => {
-      let quizNumberToBeOpenend = ++this.quizCounter;
-      for (let i = 0; i < questions.length; i++) {
-        if (quizNumberToBeOpenend === i) {
-          this.questionAnswerContainer.innerHTML = "";
-          this.answersList.innerHTML = "";
-          document.querySelector(".page-counter").remove();
-
-          this.addPageCounterToQuizContainer(this.quizCounter);
-          this.addQuestionToQaContainer(this.questionArray[i]);
-          this.addAnswersToList(this.questionArray[i]);
-          this.addAnswersListToQaContainer();
-          this.selectAnswer(this.questionArray[i]);
-        }
-      }
-
-      if (quizNumberToBeOpenend === questions.length) {
-        if (this.givenAnswers.includes(null)) {
-          alert(new Error("You haven't answered all questions yet. Please return."));
-          throw Error("You haven't answered all questions yet. Please return.");
-        }
-        this.quizContainer.remove();
-        this.btnsContainer.remove();
-        new Button("restart", new Button("start", new Quiz(questions, 0)), this.correctAnswerNumber).init();
-      }
+      this.performActionOnLastNextClick();
+      this.performActionOnRegularNextClick();
     });
+  }
+
+  performActionOnLastPrevClick() {
+    if (this.quizCounter === 0) {
+      alert(new Error("Can't move past the first question."));
+      throw Error("Can't move past the first question.");
+    }
+  }
+
+  performActionOnRegularPrevClick() {
+    let quizNumberToBeOpenend = --this.quizCounter;
+    for (let i = 0; i < questions.length; i++) {
+      if (quizNumberToBeOpenend === i) {
+        this.addNewQuizQuestionToDOM(i);
+      }
+    }
   }
 
   getPrevQuizQuestionOnClick() {
     this.prevBtn.addEventListener("click", () => {
-      if (this.quizCounter === 0) {
-        alert(new Error("Can't move past the first question."));
-        throw Error("Can't move past the first question.");
-      }
-
-      let quizNumberToBeOpenend = --this.quizCounter;
-      for (let i = 0; i < questions.length; i++) {
-        if (quizNumberToBeOpenend === i) {
-          this.questionAnswerContainer.innerHTML = "";
-          this.answersList.innerHTML = "";
-          document.querySelector(".page-counter").remove();
-
-          this.addPageCounterToQuizContainer(this.quizCounter);
-          this.addQuestionToQaContainer(this.questionArray[i]);
-          this.addAnswersToList(this.questionArray[i]);
-          this.addAnswersListToQaContainer();
-          this.selectAnswer(this.questionArray[i])
-        }
-      }
+      this.performActionOnLastPrevClick();
+      this.performActionOnRegularPrevClick();
     });
   }
 
@@ -163,7 +173,7 @@ class Quiz {
     }
   }
 
-  colorPrevAnswers(questionObj) {
+  coloralreadyAnsweredAnswer(questionObj) {
     if (this.answerHasBeenSelected[this.quizCounter] === true) {
       const answerValues = document.querySelectorAll(".answer-value");
       for (let answerValue of answerValues) {
@@ -172,26 +182,20 @@ class Quiz {
           this.colorWrongAnswerRed(answerValue, questionObj);
         }
       }
-    };
+    }
   }
 
   selectAnswer(questionObj) {
-    this.colorPrevAnswers(questionObj);
-    const handleListener = () => {
-      listenerFunction(event);
-    }
-    const listenerFunction = event => {
+    this.coloralreadyAnsweredAnswer(questionObj);
+    const listenerFunction = (event) => {
       if (event.target.classList[0] === "answer-value") {
         if (this.answerHasBeenSelected[this.quizCounter] === false) {
           this.givenAnswers[this.quizCounter] = event.target.innerText;
-
-          console.log(this.givenAnswers[this.quizCounter]);
-          console.log(questionObj.correctAnswer);
-
+  
           if (this.givenAnswers[this.quizCounter] === questionObj.correctAnswer.toString()) {
             this.correctAnswerNumber++;
           }
-
+  
           this.answerHasBeenSelected[this.quizCounter] = true;
           this.colorCorrectAnswerGreen(questionObj);
           this.colorWrongAnswerRed(event.target, questionObj);     
@@ -201,7 +205,8 @@ class Quiz {
         }
       }
     }
-    window.addEventListener("click", handleListener); 
+    const handleListener = () => listenerFunction(event); 
+    window.addEventListener("click", handleListener);
   }
 }
 

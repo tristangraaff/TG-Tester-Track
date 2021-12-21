@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
 </head>
+
 <body>
   <p>
     110011110101
@@ -1008,113 +1010,117 @@
     100110101010
     100011101011
     001000110100
-    </p>
-<script>
-  const binaryExampleData = [
-    '00100',
-    '11110',
-    '10110',
-    '10111',
-    '10101',
-    '01111',
-    '00111',
-    '11100',
-    '10000',
-    '11001',
-    '00010',
-    '01010',
-  ]
+  </p>
+  <script>
+    // PART 1
+    const binaryExampleData = [
+      '00100',
+      '11110',
+      '10110',
+      '10111',
+      '10101',
+      '01111',
+      '00111',
+      '11100',
+      '10000',
+      '11001',
+      '00010',
+      '01010',
+    ]
+    const realData = document.querySelector("p");
+    const realDataArray = realData.innerText.split(" ");
 
-  const realData = document.querySelector("p");
-  const realDataArray = realData.innerText.split(" ");
-
-  class BinaryDataArray {
-    constructor(data, binaryLength) {
-      this.data = data;
-      this.binaryLength = binaryLength;
-      this.dataInStringArrays = [];
-      this.collectedBits = [];
-      this.gammaRate = [];
-      this.epsilonRate = [];
-      this.gammaDecimal;
-      this.epsilonDecimal;
-      this.init();
-    }
-
-    init() {
-      this.createArrayForEveryBinaryValue();
-      this.compareEachIndexOfBinary(this.binaryLength);
-      this.convertBinaryArrayToDecimal();
-      this.calculatePowerConsumption();
-    }
-
-    createArrayForEveryBinaryValue() {
-      for (let binaryNumber of this.data) {
-        const stringArray = binaryNumber.split('');
-        this.dataInStringArrays.push(stringArray);
+    class BinaryDataArray {
+      constructor(data, binaryLength) {
+        this.data = data;
+        this.binaryLength = binaryLength;
+        this.dataInStringArrays = [];
+        this.collectedBits = [];
+        this.gammaRate = [];
+        this.epsilonRate = [];
+        this.gammaDecimal;
+        this.epsilonDecimal;
+        this.init();
       }
-    }
 
-    putBitsToBeComparedInArray(counter) {
-      for (let array of this.dataInStringArrays) {
-        for (let i = counter; i < counter + 1; i++) {
-          if (array[i] === "0") {
-            this.collectedBits.push(array[i]);
+      init() {
+        this.createArrayForEveryBinaryValue();
+        this.compareEachIndexOfBinary(this.binaryLength);
+        this.convertBinaryArrayToDecimal();
+        this.calculatePowerConsumption();
+      }
+
+      createArrayForEveryBinaryValue() {
+        for (let binaryNumber of this.data) {
+          const stringArray = binaryNumber.split('');
+          this.dataInStringArrays.push(stringArray);
+        }
+      }
+
+      putBitsToBeComparedInArray(counter) {
+        for (let array of this.dataInStringArrays) {
+          for (let i = counter; i < counter + 1; i++) {
+            if (array[i] === "0") {
+              this.collectedBits.push(array[i]);
+            }
+            if (array[i] === "1") {
+              this.collectedBits.push(array[i]);
+            }
           }
-          if (array[i] === "1") {
-            this.collectedBits.push(array[i]);
+        }
+      }
+
+      getMostFrequentBit() {
+        let zeroCount = 0;
+        let oneCount = 0;
+
+        for (let number of this.collectedBits) {
+          if (number === "0") {
+            zeroCount++;
+          }
+          if (number === "1") {
+            oneCount++;
           }
         }
-      }   
-    }
 
-    getMostFrequentBit() {
-      let zeroCount = 0;
-      let oneCount = 0;
-
-      for (let number of this.collectedBits) {
-        if (number === "0") {
-          zeroCount++;
+        const highestOccurence = Math.max(zeroCount, oneCount);
+        if (highestOccurence === zeroCount) {
+          this.gammaRate.push(0);
+          this.epsilonRate.push(1);
         }
-        if (number === "1") {
-          oneCount++;
+        if (highestOccurence === oneCount) {
+          this.gammaRate.push(1);
+          this.epsilonRate.push(0);
+        }
+        this.collectedBits = [];
+      }
+
+      compareEachIndexOfBinary(binaryLength) {
+        for (let i = 0; i < binaryLength; i++) {
+          this.putBitsToBeComparedInArray(i);
+          this.getMostFrequentBit();
         }
       }
 
-      const highestOccurence = Math.max(zeroCount, oneCount);
-      if (highestOccurence === zeroCount) {
-        this.gammaRate.push(0);
-        this.epsilonRate.push(1);
+      convertBinaryArrayToDecimal() {
+        const gammaString = this.gammaRate.join('');
+        const epsilonString = this.epsilonRate.join('');
+        this.gammaDecimal = parseInt(gammaString, 2);
+        this.epsilonDecimal = parseInt(epsilonString, 2);
       }
-      if (highestOccurence === oneCount) {
-        this.gammaRate.push(1);
-        this.epsilonRate.push(0);
-      }
-      this.collectedBits = [];
-    }
 
-    compareEachIndexOfBinary(binaryLength) {
-      for (let i = 0; i < binaryLength; i++) {
-        this.putBitsToBeComparedInArray(i);
-        this.getMostFrequentBit();
+      calculatePowerConsumption() {
+        const powerConsumption = this.gammaDecimal * this.epsilonDecimal;
+        console.log(powerConsumption);
       }
     }
 
-    convertBinaryArrayToDecimal() {
-      const gammaString = this.gammaRate.join('');
-      const epsilonString = this.epsilonRate.join('');
-      this.gammaDecimal = parseInt(gammaString, 2);
-      this.epsilonDecimal = parseInt(epsilonString, 2);
-    }
+    const exampleArray = new BinaryDataArray(binaryExampleData, 5);
+    const realArray = new BinaryDataArray(realDataArray, realDataArray[0].length);
 
-    calculatePowerConsumption() {
-      const powerConsumption = this.gammaDecimal * this.epsilonDecimal;
-      console.log(powerConsumption);
-    }
-  }
+  //PART 2
 
-  const exampleArray = new BinaryDataArray(binaryExampleData, 5);
-  const realArray = new BinaryDataArray(realDataArray, realDataArray[0].length);
-</script>
+  </script>
 </body>
+
 </html>
