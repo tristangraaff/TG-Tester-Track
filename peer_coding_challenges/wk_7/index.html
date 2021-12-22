@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<style>
+  * {
+    border-radius: 10px;
+  }
+
+  body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+
+  form {
+    border: 1px solid black;
+    width: 450px;
+    margin: 20px;
+    padding: 10px;
+    background: linear-gradient(90deg, #99A799, #D3E4CD);
+    box-shadow: 5px 5px 5px;
+  }
+
+  .result-container {
+    border: 1px solid black;
+    width: 400px;
+    margin: 20px;
+    padding: 10px;
+    background: linear-gradient(270deg, #99A799, #D3E4CD);
+    box-shadow: 5px 5px 5px;
+  }
+
+  label {
+    width: 100px;
+    display: inline-block;
+  }
+
+  form div {
+    margin: 10px;
+    margin-left: 15px;
+  }
+
+  form label {
+    margin-right: 80px;
+  }
+
+  .submit-btn {
+    margin-left: 15px;
+    display: block;
+    cursor: pointer;
+    padding: 10px;
+  }
+
+</style>
+
+<body>
+  <form action="page_submission_URL" method="post">
+    <div>
+      <label>Naam:</label>
+      <input name="name" placeholder="Enter Name" required/>
+    </div>
+    <div>
+      <label>Telefoon:</label>
+      <input name="phone" placeholder="Enter phone number" required/>
+    </div>
+    <div>
+      <label>Straatnaam:</label>
+      <input name="street" placeholder="Enter street" required/>
+    </div>
+    <div>
+      <label>Huisnummer:</label>
+      <input name="number" placeholder="Enter house number" required/>
+    </div>
+    <div>
+      <label>Postcode:</label>
+      <input name="postal-code" placeholder="Enter postal code" required/>
+    </div>
+    <div>
+      <label>Stad:</label>
+      <input name="city" placeholder="Enter city" required/>
+    </div>
+    <div>
+      <label>Email:</label>
+      <input name="email" placeholder="Enter email address" pattern=".+@techgrounds\.nl" required/>
+    </div>
+    <input type="button" value="Verzenden!" class="submit-btn">
+  </form>
+  <div class="result-container">
+    <div>
+      <p>Naam: </p>
+      <p class="enter-name"></p>
+    </div>
+    <div>
+      <p>Telefoon: </p>
+      <p class="enter-phone"></p>
+    </div>
+    <div>
+      <p>Adres: </p>
+      <p class="enter-address"></p>
+    </div>
+    <div>
+      <p>Email: </p>
+      <p class="enter-email"></p>
+    </div>
+  </div>
+</body>
+<script>
+  const inputs = document.querySelectorAll("input");
+  const btn = document.querySelector(".submit-btn");
+
+  const nameField = document.querySelector(".enter-name");
+  const phoneField = document.querySelector(".enter-phone");
+  const addressField = document.querySelector(".enter-address");
+  const emailField = document.querySelector(".enter-email");
+
+  btn.addEventListener("click", event => {
+    event.preventDefault();
+    for (let input of inputs) {
+      console.log(input.name)
+      switch(input.name) {
+        case "name":
+          console.log(input.value)
+          nameField.innerText = input.value;
+          break;
+        case "phone":
+          const phoneWithoutZero = input.value.slice(1);
+          const phoneWith31 = "+31" + phoneWithoutZero;
+          phoneField.innerText = phoneWith31; 
+          break;
+        case "street":
+          addressField.innerText = input.value;
+          break;
+        case "number":
+          addressField.innerText = addressField.innerText + " " + input.value;
+          break;
+        case "postal-code":
+          addressField.innerText = addressField.innerText + " " + input.value;
+          break;
+        case "city":
+          addressField.innerText = addressField.innerText + " " + input.value;
+          break;
+        case "email":
+        emailField.innerText = input.value;
+      }
+    }
+  })
+</script>
+</html>
