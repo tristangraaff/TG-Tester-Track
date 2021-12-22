@@ -5,7 +5,6 @@ class Button {
     this.btn = document.createElement(btnName);
     this.instanceToBeCreated = instanceToBeCreated;
     this.correctAnswerNumber = correctAnswerNumber;
-    console.log(this.correctAnswerNumber)
   }
 
   init() {

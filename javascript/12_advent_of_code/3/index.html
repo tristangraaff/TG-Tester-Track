@@ -1012,7 +1012,6 @@
     001000110100
   </p>
   <script>
-    // PART 1
     const binaryExampleData = [
       '00100',
       '11110',
@@ -1029,8 +1028,8 @@
     ]
     const realData = document.querySelector("p");
     const realDataArray = realData.innerText.split(" ");
-
-    class BinaryDataArray {
+    // PART 1
+    class PowerConsumption {
       constructor(data, binaryLength) {
         this.data = data;
         this.binaryLength = binaryLength;
@@ -1111,14 +1110,117 @@
 
       calculatePowerConsumption() {
         const powerConsumption = this.gammaDecimal * this.epsilonDecimal;
-        console.log(powerConsumption);
+        console.log("Power consumption: " + powerConsumption);
       }
     }
 
-    const exampleArray = new BinaryDataArray(binaryExampleData, 5);
-    const realArray = new BinaryDataArray(realDataArray, realDataArray[0].length);
+    const exampleArray = new PowerConsumption(binaryExampleData, 5);
+    const realArray = new PowerConsumption(realDataArray, realDataArray[0].length);
 
-  //PART 2
+    //PART 2
+    class AirRating {
+      constructor(data, binaryLength) {
+        this.data = data;
+        this.binaryLength = binaryLength;
+        this.dataInStringArrays = [];
+        this.collectedBits = [];
+        this.gammaRate = [];
+        this.epsilonRate = [];
+        this.gammaDecimal;
+        this.epsilonDecimal;
+        this.init();
+      }
+
+      init() {
+        this.createArrayForEveryBinaryValue();
+        this.compareEachIndexOfBinary(this.binaryLength);
+        this.getOxygenGeneratorRating();
+        // this.convertBinaryArrayToDecimal();
+        // this.calculatePowerConsumption();
+      }
+
+      createArrayForEveryBinaryValue() {
+        for (let binaryNumber of this.data) {
+          const stringArray = binaryNumber.split('');
+          this.dataInStringArrays.push(stringArray);
+        }
+      }
+
+      putBitsToBeComparedInArray(counter) {
+        for (let array of this.dataInStringArrays) {
+          for (let i = counter; i < counter + 1; i++) {
+            if (array[i] === "0") {
+              this.collectedBits.push(array[i]);
+            }
+            if (array[i] === "1") {
+              this.collectedBits.push(array[i]);
+            }
+          }
+        }
+        console.log('Collected bits to be compared: ' + this.collectedBits);
+      }
+
+      getMostFrequentBit() {
+        let zeroCount = 0;
+        let oneCount = 0;
+
+        for (let number of this.collectedBits) {
+          if (number === "0") {
+            zeroCount++;
+          }
+          if (number === "1") {
+            oneCount++;
+          }
+        }
+
+        const highestOccurence = Math.max(zeroCount, oneCount);
+        if (highestOccurence === zeroCount) {
+          this.gammaRate.push(0);
+          this.epsilonRate.push(1);
+        }
+        if (highestOccurence === oneCount) {
+          this.gammaRate.push(1);
+          this.epsilonRate.push(0);
+        }
+        this.collectedBits = [];
+      }
+
+      compareEachIndexOfBinary(binaryLength) {
+        for (let i = 0; i < binaryLength; i++) {
+          this.putBitsToBeComparedInArray(i);
+          this.getMostFrequentBit();
+        }
+        console.log('Gammarate: ' + this.gammaRate);
+        console.log('Epsilonrate: ' + this.epsilonRate);
+      }
+
+      getOxygenGeneratorRating() {
+        console.log(this.dataInStringArrays);
+        // let oxygenGenRating = this.dataInStringArrays;
+        // for (let i = 0; this.dataInStringArrays; i++) {
+        for (let i = 0; i < 2; i++) {
+
+        }
+        //   if (oxygenGenRating[i] === this.gammaRate[i]) {
+
+        //   }
+        // }
+      }
+
+      // convertBinaryArrayToDecimal() {
+      //   const gammaString = this.gammaRate.join('');
+      //   const epsilonString = this.epsilonRate.join('');
+      //   this.gammaDecimal = parseInt(gammaString, 2);
+      //   this.epsilonDecimal = parseInt(epsilonString, 2);
+      // }
+
+      // calculatePowerConsumption() {
+      //   const powerConsumption = this.gammaDecimal * this.epsilonDecimal;
+      // }
+    }
+
+    const exampleAirArray = new AirRating(binaryExampleData, 2);
+    // const realAirArray = new AirRating(realDataArray, realDataArray[0].length);
 
   </script>
 </body>

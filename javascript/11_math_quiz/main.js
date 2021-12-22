@@ -60,7 +60,7 @@ class Quiz {
       answerElement.classList.add("answer");
       answerNumber.classList.add("answer-number");
       answerValue.classList.add("answer-value");
-
+      console.log(answerNumber);
       let counter = 1;
       answerNumber.innerText = counter;
       counter++;
